@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 953570955303206397}
   - component: {fileID: 739075111913751120}
   - component: {fileID: 3259416848639752055}
+  - component: {fileID: 4162172769485829225}
   m_Layer: 0
   m_Name: EnemyDistant
   m_TagString: DistanceBot
@@ -211,6 +212,46 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4162172769485829225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776277487808257583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 11400000, guid: 92bb093280f7f524eb6e20215d2fdb10, type: 2}
+  mBehaviorSource:
+    behaviorName: Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"Variables":[{"Type":"BehaviorDesigner.Runtime.SharedBool","Name":"CanSeek","IsShared":true,"BooleanmValue":true},{"Type":"BehaviorDesigner.Runtime.SharedGameObject","Name":"MoveTarget","IsShared":true},{"Type":"BehaviorDesigner.Runtime.SharedVector3","Name":"LastSeePos","IsShared":true,"Vector3mValue":"(0,0,0)"}]}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects: []
+        byteData: 
+        byteDataArray: 
+      Version: 1.7.2
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1 &1977226984233622258
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,9 +642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 1528810958673309033}
-  MagazineCapacity: 30
-  AmmoInMagazine: 30
-  AmmoAmount: 300
+  MagazineCapacity: 2147483647
+  AmmoInMagazine: 2147483647
+  AmmoAmount: 2147483647
 --- !u!1 &9100592144836690469
 GameObject:
   m_ObjectHideFlags: 0

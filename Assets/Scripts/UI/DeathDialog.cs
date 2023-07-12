@@ -12,12 +12,14 @@ public class DeathDialog : MonoBehaviour
     }
 
     public void Show() {
-        animator.SetBool("isDead", true);
+        Debug.Log("show");
+        animator.SetBool("PlayerIsDead", true);
     }
 
     public void Hide()
     {
-        animator.SetBool("isDead", false);
+        Debug.Log("hide");
+        animator.SetBool("PlayerIsDead", false);
     }
 
     // Update is called once per frame

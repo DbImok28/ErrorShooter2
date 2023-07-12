@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour, ISaveable
 
     public void RespawnCommand()
     {
+        health.Respawn();
         HideDeathDialog();
         SaveLoadManager.instance.LoadGame();
     }

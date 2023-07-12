@@ -121,8 +121,20 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
         */
         if (isPaused)
             return;
-            
+
+        /*
+        if (GetComponent<HealthComponent>().IsDead)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
+        }
+        */
+
+
         // Player input
+
+        Debug.Log("handle input");
 
         moveDirection = new Vector3
         {

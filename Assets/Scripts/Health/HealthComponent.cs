@@ -40,6 +40,12 @@ public class HealthComponent : MonoBehaviour, ISaveable
         if (comp != null) comp.isKinematic = true;
 
         OnDie.Invoke();
+
+        if (GetComponent<PlayerController>())
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     public void Respawn()
@@ -47,9 +53,17 @@ public class HealthComponent : MonoBehaviour, ISaveable
         IsDead = false;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
+        Debug.Log("iskinematic"+gameObject.GetComponent<Rigidbody>().isKinematic);
+
         SetDefault();
 
         OnRespawn.Invoke();
+
+        if (GetComponent<PlayerController>())
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void SetDefault()
@@ -64,12 +78,20 @@ public class HealthComponent : MonoBehaviour, ISaveable
 
     public void SaveData(ref GameData gameData)
     {
-        gameData.playerHealth = CurrentHealth;
+        if (GetComponent<PlayerController>())
+        {
+            gameData.playerHealth = CurrentHealth;
+        }
+        
     }
 
     public void LoadData(GameData gameData)
     {
-        CurrentHealth = gameData.playerHealth;
+        if (GetComponent<PlayerController>())
+        {
+            CurrentHealth = gameData.playerHealth;
+        }
+        
     }
 
 }

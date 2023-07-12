@@ -1,5 +1,6 @@
 using Assets.Scripts.Weapon;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour, ITriggerPull
 {
@@ -8,6 +9,10 @@ public class Weapon : MonoBehaviour, ITriggerPull
     public TriggerPull[] TriggerPulls;
     public WeaponAimedAttack Aim;
     public MagazineWeaponAttack Magazine;
+
+    public Sprite icon_active;
+    public Sprite icon_unactive;
+
 
     private int CurrentTriggerPull = 0;
 

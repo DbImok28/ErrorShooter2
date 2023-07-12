@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 {
@@ -17,29 +18,54 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     public GameObject currentInteractable;
 
+    public UnityEvent<Interactable> InteractableChanged;
+
+    
+
     private PlayerInventory inventory;
+
+    public Camera FPSCamera;
+
+    public int Goid { get { return gameObject.GetInstanceID(); } }
+
 
     public void Init(PlayerInventory playerInventory)
     {
         this.inventory = playerInventory;
+
+        if (FPSCamera == null)
+        {
+            FPSCamera = GetComponentInChildren<Camera>();
+        }
+        
+
+
+        //InteractableAssigned += InvokeMsg;
     }
 
     public void PickUpKey()
     {
+        //Debug.Log("PickUpKey");
+
         GameObject key;
 
-        if (KeyIsNear(out key))
+        if (KeyIsNear(out key) && !key.GetComponent<KeyForDoor>().isPickedUp)
         {
-            inventory.Keys.Add(key);
+            inventory.KeysNames.Add(key.name);
+
+            inventory.KeyPickedUp?.Invoke(inventory.KeysNames);
 
             //Анимация подбора ключа
 
-            key.gameObject.SetActive(false);
+            key.GetComponent<KeyForDoor>().isPickedUp = true;
+            key.GetComponent<KeyForDoor>().Hide();
         }
     }
 
     public bool KeyIsNear(out GameObject key)
     {
+        Debug.Log("KeyIsNear");
+
         var colliders = Physics.OverlapSphere(gameObject.transform.position, CanPickUpItemRadius);
           
         foreach (var collider in colliders)
@@ -57,15 +83,17 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     public void AttachKey()
     {
+
+        //Debug.Log("Attach key");
+
         GameObject keyDoor;
 
         if(KeyDoorIsNear(out keyDoor))
         {
-            GameObject matchingKey;
+            string matchingKey;
 
             if (TryMatchKey(keyDoor, out matchingKey))
             {
-                matchingKey.SetActive(true);
 
                 //Анимация прикладывания ключа
 
@@ -93,14 +121,16 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     }
 
-    public bool TryMatchKey(GameObject keyDoor, out GameObject matchingKey)
+    public bool TryMatchKey(GameObject keyDoor, out string matchingKey)
     {
+        //Debug.Log("TryMatchKey");
+
         KeyDoor _keyDoor = keyDoor.GetComponent<KeyDoor>();
         if (_keyDoor)
         {
-            GameObject _matchingKey;
+            string _matchingKey;
 
-            if (_keyDoor.PlayerHasMatchingKey(inventory.Keys, out  _matchingKey))
+            if (_keyDoor.PlayerHasMatchingKey(inventory.KeysNames, out  _matchingKey))
             {
                 matchingKey = _matchingKey;
                 return true;
@@ -112,33 +142,60 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
     }
 
 
-    public void DisplayOrHideNote()
+
+    public bool CheckpointIsNear(out GameObject checkpoint)
     {
-        /*
-        var colliders = Physics.OverlapSphere(transform.position, СanReadNoteRadius);
+        var colliders = Physics.OverlapSphere(gameObject.transform.position, CanPickUpItemRadius);
+
         foreach (var collider in colliders)
         {
-            if (collider.gameObject.TryGetComponent<Note>(out Note note))
+            if (collider.gameObject.GetComponent<Checkpoint>())
             {
-                nearestNote = note;
-                nearestNote.DisplayOrHide();
-                break;
+                
+                checkpoint = collider.gameObject;
+                return true;
+
             }
         }
-        */
+
+        checkpoint = null;
+        return false;
+    }
+
+    public void SaveCheckpoint()
+    {
+        Debug.Log("SaveCheckpoint");
+
+        GameObject checkpoint;
+
+        if (CheckpointIsNear(out checkpoint))
+        {
+            Debug.Log("CheckpointIsNear");
+            if (checkpoint.TryGetComponent<Checkpoint>(out Checkpoint _checkpoint))
+            {
+                Debug.Log("checkpoint.TryGetComponent<Checkpoint>(out Checkpoint _checkpoint) true");
+                _checkpoint.Save();
+            };
+        }
     }
 
     public void Interact()
     {
+        Debug.Log("interact");
+
         RaycastHit hit;
         //Переделать поиск камеры
-        Ray ray = GameObject.Find("Camera").GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+
+        Ray ray = FPSCamera.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, CanInteractRadius))
         {
+
+            //Debug.Log("Physics.Raycast(ray, out hit, CanInteractRadius) START");
             Transform objectHit = hit.transform;
             if (objectHit.gameObject.TryGetComponent(out Interactable interactable))
             {
+                //Debug.Log("objectHit.gameObject.TryGetComponent(out Interactable interactable) START");
                 if (currentInteractable == interactable.gameObject)
                 {
                    return;
@@ -146,10 +203,21 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
                 if (currentInteractable)
                 {
                     currentInteractable.GetComponent<Interactable>().ReleaseInteraction();
+
                 }
+
                 
                 currentInteractable = interactable.gameObject;
                 currentInteractable.GetComponent<Interactable>().Interact();
+
+                InteractableChanged?.Invoke(currentInteractable.GetComponent<Interactable>());
+
+                //Debug.Log("objectHit.gameObject.TryGetComponent(out Interactable interactable) END");
+
+                //Debug.Log("environment " + Goid);
+
+                
+                //Debug.Log("Physics.Raycast(ray, out hit, CanInteractRadius) END");
             }
             else
             {

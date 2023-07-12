@@ -6,35 +6,15 @@ using UnityEngine.Events;
 public class DamageSrceen : MonoBehaviour
 {
 
-    [Header("Events")]
-
-    public GameObject RedScreen;
-    public HealthComponent HealthComponenthealth;
-
-    public float DisplayTime;
-
-    public Coroutine HideDamageScreenCoroutineHandle { get; private set; }
+    private Animator animator;
 
     private void Start()
     {
-        //оепедекюрэ
-
-        //HealthComponenthealth.OnTakeDamage.AddListener(ShowDamageScreen);
-    }
-    public void ShowDamageScreen(float x)
-    {
-        HideDamageScreenCoroutineHandle = StartCoroutine(HideDamageScreenCoroutine());
+        animator = GetComponent<Animator>();
     }
 
-    private IEnumerator HideDamageScreenCoroutine()
+    public void Play()
     {
-        RedScreen.SetActive(true);
-        yield return new WaitForSeconds(DisplayTime);
-        HideDamageScreen();
-    }
-    
-    public void HideDamageScreen()
-    {
-        RedScreen.SetActive(false);
+        animator.SetTrigger("play");
     }
 }

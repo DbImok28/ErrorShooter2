@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyInterface : MonoBehaviour
+public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 {
     [SerializeField] public NavMeshAgent agent;
     [SerializeField] public Transform target = null;
@@ -26,6 +26,8 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public Weapon weapon;
 
+    private bool isPaused;
+
     private void Start()
     {
         //HPBar.value = health;
@@ -48,6 +50,7 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public bool IsViewTarget()
     {
+        
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
@@ -59,12 +62,16 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public void EnemyWalk(Vector3 pos)
     {
+        if (isPaused)
+            return;
         agent.Resume();
         agent.SetDestination(pos);
     }
 
     public void RotateToTarget()
     {
+        if (isPaused)
+            return;
         //transform.LookAt(new Vector3(target.position.x,target.position.y+1.5f,target.position.z));
         //smooth rotate
         var targetRotation = Quaternion.LookRotation(new Vector3(target.position.x, target.position.y + 1.5f, target.position.z) - transform.position,Vector3.up);
@@ -80,6 +87,9 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public void GotoNextPoint()
     {
+        if (isPaused)
+            return;
+
         if (IsPointsExist()) {
             EnemyWalk(points[destPoint].position);
             destPoint = (destPoint + 1) % points.Length;
@@ -88,7 +98,10 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public void EnemyRunAway()
     {
-        IsRunAway= true;
+        if (isPaused)
+            return;
+
+        IsRunAway = true;
         //run away from player
         //Vector3 pos = new Vector3(Random.Range(-transform.position.x -10f, transform.position.x + 10f), 0, Random.Range(-transform.position.z + 10f, transform.position.z + 10f));
         //EnemyWalk(pos);
@@ -121,6 +134,9 @@ public abstract class EnemyInterface : MonoBehaviour
 
     public void EnemyAttack()
     {
+        if (isPaused)
+            return;
+
         agent.Stop();
 
         // method when Enemy ready give damage to Player with reload attake
@@ -136,5 +152,10 @@ public abstract class EnemyInterface : MonoBehaviour
     public void EnemyDie()
     {
         Destroy(gameObject);
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        this.isPaused = isPaused;
     }
 }

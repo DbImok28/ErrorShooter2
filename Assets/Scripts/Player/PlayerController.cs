@@ -1,13 +1,16 @@
 using ECM.Controllers;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PlayerController : BaseFirstPersonController, ISaveable
+public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHandler
 {
     [Header("Inventory")]
     [SerializeField] public PlayerInventory Inventory;
     [Header("Weapon")]
     [SerializeField] public GameObject WeaponSocket;
+
+    public UnityEvent<Weapon> WeaponChanged;
 
     private GameObject ActiveWeaponGameObject;
     private Weapon ActiveWeapon;
@@ -15,6 +18,8 @@ public class PlayerController : BaseFirstPersonController, ISaveable
     private bool WeaponInHand = false;
 
     private PlayerEnvironmentInteraction environmentInteraction;
+
+    private bool isPaused;
 
     public void StartSwapWeapon()
     {
@@ -27,10 +32,17 @@ public class PlayerController : BaseFirstPersonController, ISaveable
         {
             ActiveWeaponGameObject = weaponGameObject;
             ActiveWeapon = newWeapon;
+
+            //Debug.Log("active weapon " + ActiveWeapon);
+            //WeaponChanged?.Invoke(ActiveWeapon);
+
             return true;
         }
         return false;
     }
+
+
+
     public bool AssignWeaponToSocket(int index)
     {
         if (index >= 0 && index < Inventory.Weapons.Count)
@@ -42,6 +54,9 @@ public class PlayerController : BaseFirstPersonController, ISaveable
                 Destroy(weaponGameObject);
                 return false;
             }
+
+            //WeaponChanged?.Invoke(ActiveWeapon);
+
             return true;
         }
         return false;
@@ -74,13 +89,23 @@ public class PlayerController : BaseFirstPersonController, ISaveable
             if (AssignWeaponToSocket(index))
             {
                 // Show weapon Anim
+                
+
                 EndSwapWeapon();
+
+                if (ActiveWeapon!=null)
+                {
+                    WeaponChanged?.Invoke(ActiveWeapon);
+                }
+
+                
             }
         }
     }
     public void SwapToNextWeapon()
     {
         SwapWeapon((ActiveWeaponIndex + 1) % Inventory.Weapons.Count);
+
     }
 
     protected override void HandleInput()
@@ -88,12 +113,15 @@ public class PlayerController : BaseFirstPersonController, ISaveable
         // Toggle pause / resume.
         // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
+        /*
         if (Input.GetKeyDown(KeyCode.P))
         {
             pause = !pause;
         }
+        */
+        if (isPaused)
+            return;
             
-
         // Player input
 
         moveDirection = new Vector3
@@ -126,13 +154,12 @@ public class PlayerController : BaseFirstPersonController, ISaveable
             if (Input.GetKeyDown(KeyCode.E))
             {
                 SwapToNextWeapon();
+
+                
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            environmentInteraction.DisplayOrHideNote();
-        }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             environmentInteraction.PickUpKey();
@@ -141,9 +168,16 @@ public class PlayerController : BaseFirstPersonController, ISaveable
         {
             environmentInteraction.AttachKey();
         }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            environmentInteraction.SaveCheckpoint();
+        }
         environmentInteraction.Interact();
 
     }
+
+    
+
 
     public void Start()
     {
@@ -153,14 +187,14 @@ public class PlayerController : BaseFirstPersonController, ISaveable
         }
         SwapWeapon(0);
 
-        environmentInteraction= GetComponent<PlayerEnvironmentInteraction>();
+        environmentInteraction = GetComponent<PlayerEnvironmentInteraction>();
         environmentInteraction.Init(Inventory);
 
     }
 
     public void SaveData(ref GameData gameData)
     {
-        gameData.playerX=transform.position.x;
+        gameData.playerX = transform.position.x;
         gameData.playerY = transform.position.y;
         gameData.playerZ = transform.position.z;
     }
@@ -168,5 +202,10 @@ public class PlayerController : BaseFirstPersonController, ISaveable
     public void LoadData(GameData gameData)
     {
         transform.position=new Vector3(gameData.playerX, gameData.playerY, gameData.playerZ);
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        this.isPaused = isPaused;
     }
 }

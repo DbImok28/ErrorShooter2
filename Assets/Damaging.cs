@@ -13,7 +13,6 @@ public class Damaging : MonoBehaviour
         if (healthComponent)
         {
             healthComponent.TakeDamage(Damage);
-            Debug.Log("Player is damaged");
         }
     }
 }

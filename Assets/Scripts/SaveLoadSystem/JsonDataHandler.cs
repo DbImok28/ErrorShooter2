@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class JsonDataHandler : MonoBehaviour
+public class JsonDataHandler
 {
     private string dataDirPath = "";
     private string dataFileName = "";

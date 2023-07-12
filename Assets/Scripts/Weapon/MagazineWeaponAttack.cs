@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Weapon
 {
@@ -7,9 +8,13 @@ namespace Assets.Scripts.Weapon
         [SerializeField] private WeaponAttack WeaponAttackDecorator;
         [SerializeField] private int MagazineCapacity = 30;
 
+        public int _MagazineCapacity { get { return MagazineCapacity; } }
+
         // TODO:Mark private
         public int AmmoInMagazine = 0;
         public int AmmoAmount = 0;
+
+        public UnityEvent<MagazineWeaponAttack> AmmoAmountChanged;
 
         public MagazineWeaponAttack(WeaponAttack subWeaponAttack, int magazineCapacity = 30)
         {
@@ -25,6 +30,9 @@ namespace Assets.Scripts.Weapon
                 return false;
             }
             --AmmoInMagazine;
+
+            AmmoAmountChanged?.Invoke(this);
+
             WeaponAttackDecorator.Attack(position, direction);
             return true;
         }
@@ -36,6 +44,9 @@ namespace Assets.Scripts.Weapon
             {
                 var dif = AmmoInMagazine - MagazineCapacity;
                 AmmoInMagazine = MagazineCapacity;
+
+                AmmoAmountChanged?.Invoke(this);
+
                 return dif;
             }
             return 0;

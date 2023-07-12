@@ -19,7 +19,7 @@ public class KeyDoor : Door
         return PlayerIsNear() && playerHasMatchingKey;
     }
 
-    public bool PlayerHasMatchingKey(List<GameObject> playerkeys, out GameObject matchingKey)
+    public bool PlayerHasMatchingKey(List<string> playerkeys, out string matchingKey)
     {
         playerHasMatchingKey = cardreader.PlayerHasMatchingKey(playerkeys, out matchingKey);
         return playerHasMatchingKey;

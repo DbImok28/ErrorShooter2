@@ -6,18 +6,25 @@ using UnityEngine.Events;
 
 public class Cardreader : MonoBehaviour
 {
+
     public string CardreaderKeyName;
 
-    public bool PlayerHasMatchingKey(List<GameObject> playerkeys, out GameObject matchingKey)
+    public bool PlayerHasMatchingKey(List<string> playerkeys, out string matchingKey)
     {
+
+        //Debug.Log("PlayerHasMatchingKey");
        
-        foreach(GameObject playerKey in playerkeys)
+        foreach(string playerKey in playerkeys)
         {
-            if (playerKey.TryGetComponent<KeyForDoor>(out KeyForDoor keyForDoor))
-            {
-                matchingKey = playerKey;
-                return true;
-            }
+            //Debug.Log($"{playerKey} {CardreaderKeyName}");
+
+                if (playerKey == CardreaderKeyName)
+                {
+                    matchingKey = playerKey;
+                    return true;
+                }
+                
+            
         }
 
         matchingKey = null;

@@ -5,16 +5,10 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     // Start is called before the first frame update
-    private void OnTriggerEnter(Collider other)
+    public void Save()
     {
-        PlayerRespawn playerRespawn = other.gameObject.GetComponent<PlayerRespawn>();
-        if (playerRespawn)
-        {
-            if (!playerRespawn.CheckPoints.Contains(gameObject))
-            {
-                playerRespawn.CheckPoints.Add(gameObject);
-            }
-            
-        }
+        Debug.Log("checkpoint savegame");
+
+        SaveLoadManager.instance.SaveGame();
     }
 }

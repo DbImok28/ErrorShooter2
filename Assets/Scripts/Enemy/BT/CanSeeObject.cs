@@ -9,8 +9,14 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
         public SharedGameObject targetObject;
         public SharedFloat fieldOfViewAngle = 90;
         public SharedFloat viewDistance = 1000;
+        public SharedFloat nearViewDistance = 5;
         public SharedGameObject returnedObject;
         public SharedVector3 lastSeePosition;
+
+        public override void OnStart()
+        {
+            targetObject = BehaviorTree.FindObjectOfType<PlayerController>().gameObject;
+        }
 
         public override TaskStatus OnUpdate()
         {
@@ -33,7 +39,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
             var direction = targetObject.transform.position - transform.position;
             direction.y = 0;
             var angle = Vector3.Angle(direction, transform.forward);
-            if (direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f)
+
+            if ((direction.magnitude < viewDistance && angle < fieldOfViewAngle * 0.5f) || direction.magnitude < nearViewDistance.Value)
             {
                 if (LineOfSight(targetObject))
                 {

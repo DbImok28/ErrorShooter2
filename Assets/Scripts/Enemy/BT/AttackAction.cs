@@ -20,11 +20,12 @@ public class AttackAction : Action
         if (Target.Value == null || WeaponToAttack == null)
             return TaskStatus.Failure;
 
-        //WeaponToAttack.Release();
+        Vector3 targetPostition = new Vector3(Target.Value.transform.position.x, transform.position.y, Target.Value.transform.position.z);
+        transform.LookAt(targetPostition);
+
         WeaponToAttack.Press();
         Debug.Log("Attack");
         return TaskStatus.Success;
-        //return TaskStatus.Success;
     }
 
     public override void OnEnd()

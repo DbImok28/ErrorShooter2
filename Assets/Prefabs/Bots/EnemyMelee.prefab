@@ -287,6 +287,9 @@ MonoBehaviour:
   MagazineCapacity: 30
   AmmoInMagazine: 30
   AmmoAmount: 300
+  AmmoAmountChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2901668517558234470
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +342,8 @@ MonoBehaviour:
   - {fileID: 8395004100906671404}
   Aim: {fileID: 8779402878134049795}
   Magazine: {fileID: 3051785399933739292}
+  icon_active: {fileID: 0}
+  icon_unactive: {fileID: 0}
 --- !u!1 &3965696235470407830
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +595,8 @@ MonoBehaviour:
   MaxShootDistance: 4000
   DebugShootSource: {fileID: 5722214126554251589}
   ShowDebugSphere: 0
+  ProjectileGameObject: {fileID: 0}
+  ShowProjectileSphere: 0
 --- !u!1 &6226227513793962510
 GameObject:
   m_ObjectHideFlags: 0

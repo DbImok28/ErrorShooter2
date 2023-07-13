@@ -11,6 +11,10 @@ namespace Assets.Scripts.Weapon
         private GameObject DebugShootPointSphere;
         [SerializeField] private bool ShowDebugSphere = true;
 
+        [SerializeField] private GameObject[] ProjectileShootSources;
+        [SerializeField] private GameObject ProjectileGameObject;
+        [SerializeField] private bool ShowProjectileSphere = true;
+
         private void Start()
         {
             // Debug code
@@ -55,6 +59,17 @@ namespace Assets.Scripts.Weapon
                     sphere.transform.localRotation = Quaternion.identity;
                     Destroy(sphere, 5);
                 }
+
+                if (ShowProjectileSphere)
+                {
+                    foreach (var source in ProjectileShootSources)
+                    {
+                        var projectile = Instantiate(ProjectileGameObject/*, source.transform*/);
+                        projectile.transform.SetPositionAndRotation(source.transform.position, Quaternion.LookRotation(direction, Vector3.up));
+                        //projectile.transform.SetPositionAndRotation(source.transform.position, source.transform.rotation);
+                    }
+                }
+
                 return true;
             }
             return false;

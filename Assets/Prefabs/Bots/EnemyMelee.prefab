@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1501090423219196075}
   - component: {fileID: -5959924552358124020}
   - component: {fileID: 1825756281714416398}
-  - component: {fileID: 1421586838375904356}
+  - component: {fileID: 8931008118434974296}
   m_Layer: 0
   m_Name: EnemyMelee
   m_TagString: MeleeBot
@@ -207,21 +207,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3208e9e5fbbe1e409111866a16baa2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &1421586838375904356
-Animation:
+--- !u!95 &8931008118434974296
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229353154969662369}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 43038ecc1529c1942be07d58c4829072, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90218aab5acfe604786803e4e7dd01ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &883825947403983789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,32 +1117,6 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7f20b0ec8a05d994b8bf3aa4e7b2dac0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &8509562496220818936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5914173764048766335, guid: 31b41c67b07804e49a9b014c1216cf69,
-    type: 3}
-  m_PrefabInstance: {fileID: 2597266045533530247}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &2626669813094314135
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509562496220818936}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 90218aab5acfe604786803e4e7dd01ef, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -40,7 +40,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         EnemyHP.OnDie.AddListener(EnemyDie);
 
         weapon = gameObject.GetComponentInChildren<Weapon>();
-        if (gameObject.tag=="MeleeBot")
+        if (gameObject.tag == "MeleeBot")
             GotoNextPoint();
     }
     private void Awake()
@@ -50,11 +50,11 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 
     public bool IsViewTarget()
     {
-        
+
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            if(hit.collider.tag == "Player")
+            if (hit.collider.tag == "Player")
                 return true;
         }
         return false;
@@ -76,7 +76,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 
         //transform.LookAt(new Vector3(target.position.x,target.position.y+1.5f,target.position.z));
         //smooth rotate
-        var targetRotation = Quaternion.LookRotation(new Vector3(target.position.x, target.position.y + 1.5f, target.position.z) - transform.position,Vector3.up);
+        var targetRotation = Quaternion.LookRotation(new Vector3(target.position.x, target.position.y + 1.5f, target.position.z) - transform.position, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed);
     }
 
@@ -92,7 +92,8 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         if (isPaused)
             return;
 
-        if (IsPointsExist()) {
+        if (IsPointsExist())
+        {
             EnemyWalk(points[destPoint].position);
             destPoint = (destPoint + 1) % points.Length;
         }
@@ -107,15 +108,15 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         //run away from player
         //Vector3 pos = new Vector3(Random.Range(-transform.position.x -10f, transform.position.x + 10f), 0, Random.Range(-transform.position.z + 10f, transform.position.z + 10f));
         //EnemyWalk(pos);
-        if(IsPointsExist())
+        if (IsPointsExist())
         {
             int k = 0;
             float MinDistanceBetweenEnemyAndPoint = Vector3.Distance(transform.position, points[0].position);
             for (int i = 1; i < points.Length; i++)
             {
                 float distanceBetweenEnemyAndPoint = Vector3.Distance(transform.position, points[i].position);
-                if (distanceBetweenEnemyAndPoint < MinDistanceBetweenEnemyAndPoint&& CalculateDistanceBetweenPlayerAndPoints(i) > distanceForAttake)
-                {  
+                if (distanceBetweenEnemyAndPoint < MinDistanceBetweenEnemyAndPoint && CalculateDistanceBetweenPlayerAndPoints(i) > distanceForAttake)
+                {
                     MinDistanceBetweenEnemyAndPoint = distanceBetweenEnemyAndPoint;
                     k = i;
                 }
@@ -123,7 +124,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
             EnemyWalk(points[k].position);
         }
     }
-    
+
     public float CalculateDistanceBetweenPlayerAndPoints(int i)
     {
         return (Vector3.Distance(transform.position, points[i].position));
@@ -131,7 +132,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 
     public void ResetIsRunAway()
     {
-        IsRunAway= false;
+        IsRunAway = false;
     }
 
     public void EnemyAttack()
@@ -145,7 +146,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         if (Time.time > nextSpawn)
         {
             nextSpawn = Time.time + spawnRate;
-            gameObject.GetComponentInChildren<Animator>().Play("testAttakeMeleeBot");
+            //gameObject.GetComponentInChildren<Animator>().Play("testAttakeMeleeBot");
             weapon.Press();
             weapon.Release();
         }

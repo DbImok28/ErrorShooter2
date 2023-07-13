@@ -19,6 +19,8 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
     private PlayerEnvironmentInteraction environmentInteraction;
 
+
+    private PauseManager pauseManager;
     private bool isPaused;
 
     public void StartSwapWeapon()
@@ -110,31 +112,15 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
     protected override void HandleInput()
     {
-        // Toggle pause / resume.
-        // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
-        /*
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            pause = !pause;
-        }
-        */
         if (isPaused)
             return;
 
-        /*
+        
         if (GetComponent<HealthComponent>().IsDead)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             return;
-        }
-        */
 
-
-        // Player input
-
-        Debug.Log("handle input");
+        
 
         moveDirection = new Vector3
         {
@@ -188,9 +174,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
     }
 
-    
-
-
+   
     public void Start()
     {
         if (Inventory == null)
@@ -219,5 +203,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
     public void SetPaused(bool isPaused)
     {
         this.isPaused = isPaused;
+
+        //Debug.Log($"PLAYER SET PAUSED {isPaused}");
     }
 }

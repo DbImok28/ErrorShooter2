@@ -1,28 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PauseManager
 {
-    public bool IsPaused { get { return isPaused; } set { isPaused = value; UpdatePauseHandlers(); } }
+    public bool IsPaused { get { return isPaused; } set { isPaused = value; Debug.Log($"is paused : {isPaused}"); UpdatePauseHandlers(); } }
 
-    private bool isPaused;
+    private bool isPaused=false;
 
-    public delegate void PauseHandler(bool isPaused);
-    public event PauseHandler PauseStateChaned;
+    private List<IPauseHandler> pauseHandlers=new List<IPauseHandler>();
 
-    public void TogglePause()
+    //public delegate void PauseHandler(bool isPaused);
+    //public UnityEvent<bool> PauseStateChaned;
+    public void SetPaused(bool pause)
     {
-        Debug.Log("toggle pause");
-        IsPaused = !IsPaused;
+        IsPaused = pause;
     }
 
-    List<IPauseHandler> pauseHandlers;
+
+    public void AddPauseHandler(IPauseHandler pauseHandler)
+    {
+        pauseHandlers.Add(pauseHandler);
+
+        //Debug.Log($"added pause haandler. count is {pauseHandlers.Count}");
+    }
+
     public void UpdatePauseHandlers()
     {
+        
         foreach(IPauseHandler ph in pauseHandlers)
         {
-            ph.SetPaused(isPaused);
+            ph.SetPaused(IsPaused);
         }
     }
 

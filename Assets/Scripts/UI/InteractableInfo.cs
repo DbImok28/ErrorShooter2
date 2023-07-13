@@ -42,7 +42,7 @@ public class InteractableInfo : MonoBehaviour
 
         if (!ItemIsInited)
         {
-            Debug.Log("ii init");
+            //Debug.Log("ii init");
             this.playerEnvironmentInteraction = pei;
 
             

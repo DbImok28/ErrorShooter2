@@ -13,15 +13,25 @@ public class GameData
 
     public SerializableDictionary<string, KeyData> keysData;
 
+    public float lateralSensitivity;
+    public float verticalSensitivity;
+    public float maxPitchAngle;
+    public float minPitchAngle;
+
     public GameData()
     {
         playerHealth = 10;
         //playerAmmoRemain = 30;
-        playerX = 0;
+        playerX = 3.8f;
         playerY = 0;
-        playerZ = 0;
+        playerZ = 3.3f;
 
         keysData = new SerializableDictionary<string, KeyData>();
+
+        lateralSensitivity = 4;
+        verticalSensitivity = 4;
+        maxPitchAngle = 90;
+        minPitchAngle = -90;
 
     }
 

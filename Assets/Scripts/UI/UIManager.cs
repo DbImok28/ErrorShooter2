@@ -1,6 +1,8 @@
 using Assets.Scripts.Weapon;
+using ECM.Components;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,9 +10,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour, ISaveable
 {
     // Start is called before the first frame update
-    public Button PauseButton;
+    public Button ContinueGameButton;
     public Button RespawnButton;
     public Button MainMenuButton;
+    public Button PauseMainMenuButton;
 
     public HealthProgressBar HealthProgressBar;
     public AmmoBar AmmoBar;
@@ -19,6 +22,7 @@ public class UIManager : MonoBehaviour, ISaveable
     public KeysBar KeysBar;
 
     public DamageSrceen damageSrceen;
+    public PauseDialog pauseDialog;
     public DeathDialog deathDialog;
 
     private PlayerController player;
@@ -36,34 +40,59 @@ public class UIManager : MonoBehaviour, ISaveable
         InitUIItems();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (!pauseManager.IsPaused)
+            {
+                StartPause();
+            }
+            else
+            {
+                EndPause();
+            }
+            
+
+        }
+    }
+
+    public void StartPause()
+    {
+        pauseDialog.gameObject.SetActive(true);
+
+        pauseManager.SetPaused(true);
+    }
+
+    public void EndPause()
+    {
+        pauseDialog.gameObject.SetActive(false);
+
+        pauseManager.SetPaused(false);
     }
 
 
     public void Init()
     {
+        pauseManager = new PauseManager();
+
         player = FindObjectsOfType<PlayerController>()[0];
         health = FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<HealthComponent>();
-        //magazine = FindObjectsOfType<MagazineWeaponAttack>()[0];
         inventory= FindObjectsOfType<PlayerInventory>()[0];
         pei= FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<PlayerEnvironmentInteraction>();
 
+        SubscrbiePauseHandlers();
 
-        //Debug.Log(pei);
-
-        pauseManager = new PauseManager();
-
-        PauseButton.onClick.AddListener(pauseManager.TogglePause);
         RespawnButton.onClick.AddListener(RespawnCommand);
         MainMenuButton.onClick.AddListener(MainMenuCommand);
+        PauseMainMenuButton.onClick.AddListener(MainMenuCommand);
+        ContinueGameButton.onClick.AddListener(EndPause);
 
         health.OnTakeDamage.AddListener(PlayDamageScreen);
         health.OnDie.AddListener(ShowDeathDialog);
 
         player.WeaponChanged.AddListener(UpdateAmmoBarWeapon);
+
     }
 
     public void InitUIItems()
@@ -78,7 +107,6 @@ public class UIManager : MonoBehaviour, ISaveable
 
     public void UpdateAmmoBarWeapon(Weapon weapon)
     {
-        //Debug.Log("UpdateAmmoBarWeapon");
         AmmoBar.UpdateWeapon(weapon);
     }
 
@@ -104,7 +132,6 @@ public class UIManager : MonoBehaviour, ISaveable
     {
         Init();
         InitUIItems();
-        //Debug.Log("обновляем интерфейс...");
     }
 
     public void PlayDamageScreen(HealthComponent hc, float damage) {
@@ -112,13 +139,17 @@ public class UIManager : MonoBehaviour, ISaveable
     }
 
     public void ShowDeathDialog() {
-        deathDialog.Show();
-        UnlockCursor();
+        deathDialog.gameObject.SetActive(true);
     }
+
+    
 
     public void HideDeathDialog()
     {
-        deathDialog.Hide();
+        RespawnButton.interactable = false;
+        MainMenuButton.interactable = false;
+
+        deathDialog.gameObject.SetActive(false);
     }
 
     public void LockCursor()
@@ -132,4 +163,24 @@ public class UIManager : MonoBehaviour, ISaveable
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    //Каждый раз при спавне нового врага подписывать врага
+    public void AddPauseHandler(IPauseHandler pauseHandler)
+    {
+        pauseManager.AddPauseHandler(pauseHandler);
+    }
+
+    private void SubscrbiePauseHandlers()
+    {
+        pauseManager.AddPauseHandler(player);
+        pauseManager.AddPauseHandler(player.gameObject.GetComponent<MouseLook>());
+
+        List<IPauseHandler> enemies = FindObjectsOfType<MonoBehaviour>().OfType<EnemyInterface>().OfType<IPauseHandler>().ToList();
+
+        foreach(IPauseHandler enemy in enemies)
+        {
+            AddPauseHandler(enemy);
+        }
+    }
+
 }

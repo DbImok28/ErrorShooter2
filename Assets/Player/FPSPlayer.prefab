@@ -515,39 +515,6 @@ MonoBehaviour:
   OnGameStart:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &8173617960629332651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3350520855532217268, guid: a3971036362460e42b32f2312423bb87,
-    type: 3}
-  m_PrefabInstance: {fileID: 5180797624202424762}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7120546869314095284}
-  m_Layer: 0
-  m_Name: 'Shotgun (Missing Prefab with guid: a3971036362460e42b32f2312423bb87)'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7120546869314095284
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2680943994186856718, guid: a3971036362460e42b32f2312423bb87,
-    type: 3}
-  m_PrefabInstance: {fileID: 5180797624202424762}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8173617960629332651}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5478904308190972522}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9187891123649646341
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,6 +621,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3971036362460e42b32f2312423bb87, type: 3}
+--- !u!4 &7120546869314095284 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2680943994186856718, guid: a3971036362460e42b32f2312423bb87,
+    type: 3}
+  m_PrefabInstance: {fileID: 5180797624202424762}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5596385474302983348
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -181,10 +181,8 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     public void Interact()
     {
-        Debug.Log("interact");
 
         RaycastHit hit;
-        //Переделать поиск камеры
 
         Ray ray = FPSCamera.ScreenPointToRay(Input.mousePosition);
 

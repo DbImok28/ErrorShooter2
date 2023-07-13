@@ -11,7 +11,7 @@ namespace ECM.Components
     /// This must be attached to the game object with 'CharacterMovement' component.
     /// </summary>
 
-    public class MouseLook : MonoBehaviour
+    public class MouseLook : MonoBehaviour, IPauseHandler, ISaveable
     {
         #region EDITOR EXPOSED FIELDS
 
@@ -156,6 +156,8 @@ namespace ECM.Components
             set { _maxPitchAngle = Mathf.Clamp(value, -180.0f, 180.0f); }
         }
 
+        private bool isPaused;
+
         #endregion
 
         #region METHODS
@@ -175,6 +177,9 @@ namespace ECM.Components
 
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
+            if (isPaused)
+                return;
+
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;
             var pitch = Input.GetAxis("Mouse Y") * verticalSensitivity;
 
@@ -291,7 +296,26 @@ namespace ECM.Components
             minPitchAngle = _minPitchAngle;
             maxPitchAngle = _maxPitchAngle;
         }
-        
+
+        public void SetPaused(bool isPaused)
+        {
+            this.isPaused = isPaused;
+        }
+
+        public void SaveData(ref GameData gameData)
+        {
+            
+        }
+
+        public void LoadData(GameData gameData)
+        {
+            verticalSensitivity = gameData.verticalSensitivity;
+            lateralSensitivity = gameData.lateralSensitivity;
+            maxPitchAngle = gameData.maxPitchAngle;
+            minPitchAngle = gameData.minPitchAngle;
+
+        }
+
         #endregion
     }
 }

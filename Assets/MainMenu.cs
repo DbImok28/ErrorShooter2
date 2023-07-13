@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    const string GAMEPLAY_SCENE_NAME = "MainScene";
+    const string GAMEPLAY_SCENE_NAME = "MainLabScene";
 
     public Button NewGameButton;
     public Button ContinueGameButton;
+    public Button SettingsButton;
+    public Button BackToMenuButton;
+
+    public SettingDialog settingsDialog;
 
     private void Start()
     {
@@ -20,7 +24,9 @@ public class MainMenu : MonoBehaviour
 
         NewGameButton.onClick.AddListener(NewGame);
         ContinueGameButton.onClick.AddListener(ContinueGame);
-    }
+        SettingsButton.onClick.AddListener(ShowSettingsDialog);
+        BackToMenuButton.onClick.AddListener(HandleBackToMenu);
+}
 
 
     public void NewGame()
@@ -36,6 +42,26 @@ public class MainMenu : MonoBehaviour
     public void ContinueGame()
     {
         SceneManager.LoadSceneAsync(GAMEPLAY_SCENE_NAME);
+    }
+
+    public void HandleBackToMenu()
+    {
+        SaveLoadManager.instance.SaveGame();
+        HideSettingsDialog();
+    }
+
+    public void ShowSettingsDialog()
+    {
+        settingsDialog.gameObject.SetActive(true);
+        Debug.Log("ShowSettingsDialog");
+        Debug.Log($"settingsDialog.enabled {settingsDialog.enabled}");
+        //settingsDialog.Show();
+    }
+
+    public void HideSettingsDialog()
+    {
+        //settingsDialog.Hide();
+        settingsDialog.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathDialog : MonoBehaviour
+public class PauseDialog : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Animator animator;
 
     void Start()
@@ -12,15 +11,11 @@ public class DeathDialog : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Show() {
+    public void Show()
+    {
         animator.SetBool("show", true);
     }
 
-   
-    public void Hide()
-    {
-        animator.SetBool("show", false);
-    }
 
     public void OnEnable()
     {
@@ -34,9 +29,8 @@ public class DeathDialog : MonoBehaviour
         Hide();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Hide()
     {
-        
+        animator.SetBool("show", false);
     }
 }

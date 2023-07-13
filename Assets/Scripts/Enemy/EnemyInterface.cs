@@ -64,6 +64,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
     {
         if (isPaused)
             return;
+
         agent.Resume();
         agent.SetDestination(pos);
     }
@@ -72,6 +73,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
     {
         if (isPaused)
             return;
+
         //transform.LookAt(new Vector3(target.position.x,target.position.y+1.5f,target.position.z));
         //smooth rotate
         var targetRotation = Quaternion.LookRotation(new Vector3(target.position.x, target.position.y + 1.5f, target.position.z) - transform.position,Vector3.up);

@@ -266,6 +266,39 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5000001, y: 3.2926588, z: 0.102260485}
   m_Center: {x: 0, y: 1.6463294, z: -0.000000048428774}
+--- !u!1 &4458140367175279944
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2827733859166375551, guid: 8b757e1048cf99e4fbf2bb7215b96091,
+    type: 3}
+  m_PrefabInstance: {fileID: 2389978489312324991}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5347280477260665718}
+  m_Layer: 0
+  m_Name: 'door_double 1 (Missing Prefab with guid: 8b757e1048cf99e4fbf2bb7215b96091)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5347280477260665718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 7719085677359005193, guid: 8b757e1048cf99e4fbf2bb7215b96091,
+    type: 3}
+  m_PrefabInstance: {fileID: 2389978489312324991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458140367175279944}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2389978487574763837}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7371684770152919657
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,9 +477,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b757e1048cf99e4fbf2bb7215b96091, type: 3}
---- !u!4 &5347280477260665718 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7719085677359005193, guid: 8b757e1048cf99e4fbf2bb7215b96091,
-    type: 3}
-  m_PrefabInstance: {fileID: 2389978489312324991}
-  m_PrefabAsset: {fileID: 0}

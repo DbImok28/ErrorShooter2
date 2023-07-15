@@ -10,7 +10,7 @@ public class HealthComponent : MonoBehaviour, ISaveable
 
     [Header("Events")]
     public UnityEvent<HealthComponent, float> OnTakeDamage;
-    public UnityEvent OnDie;
+    public UnityEvent<GameObject> OnDie;
     public UnityEvent OnRespawn;
     public UnityEvent<HealthComponent> OnGameStart;
 
@@ -39,7 +39,7 @@ public class HealthComponent : MonoBehaviour, ISaveable
         var comp = gameObject.GetComponent<Rigidbody>();
         if (comp != null) comp.isKinematic = true;
 
-        OnDie.Invoke();
+        OnDie.Invoke(this.gameObject);
 
         if (GetComponent<PlayerController>())
         {

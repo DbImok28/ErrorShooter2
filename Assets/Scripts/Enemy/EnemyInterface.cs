@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,6 +29,10 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 
     private bool isPaused;
 
+    private string id;
+
+
+
     private void Start()
     {
         //HPBar.value = health;
@@ -42,9 +47,23 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         weapon = gameObject.GetComponentInChildren<Weapon>();
         if (gameObject.tag == "MeleeBot")
             GotoNextPoint();
+
+        
     }
+
+    private string GenerateId()
+    {
+        return Guid.NewGuid().ToString();
+    }
+
+    public string GetId()
+    {
+        return id;
+    }
+
     private void Awake()
     {
+        id = GenerateId();
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -152,7 +171,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
         }
     }
 
-    public void EnemyDie()
+    public void EnemyDie(GameObject gameObject)
     {
         Destroy(gameObject);
     }
@@ -161,4 +180,6 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
     {
         this.isPaused = isPaused;
     }
+
+    
 }

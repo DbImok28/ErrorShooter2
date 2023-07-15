@@ -7,7 +7,7 @@ public class BotDeath : MonoBehaviour
         GetComponent<HealthComponent>().OnDie.AddListener(Death);
     }
 
-    private void Death()
+    private void Death(GameObject _gameObject)
     {
         Destroy(gameObject);
     }

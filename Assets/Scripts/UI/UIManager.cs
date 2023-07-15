@@ -53,6 +53,7 @@ public class UIManager : MonoBehaviour, ISaveable
                 EndPause();
             }
             
+            
 
         }
     }
@@ -138,7 +139,7 @@ public class UIManager : MonoBehaviour, ISaveable
         damageSrceen.Play();
     }
 
-    public void ShowDeathDialog() {
+    public void ShowDeathDialog(GameObject _gameobject) {
         deathDialog.gameObject.SetActive(true);
     }
 

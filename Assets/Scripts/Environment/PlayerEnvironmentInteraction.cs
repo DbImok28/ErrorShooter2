@@ -164,16 +164,13 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     public void SaveCheckpoint()
     {
-        Debug.Log("SaveCheckpoint");
 
         GameObject checkpoint;
 
         if (CheckpointIsNear(out checkpoint))
         {
-            Debug.Log("CheckpointIsNear");
             if (checkpoint.TryGetComponent<Checkpoint>(out Checkpoint _checkpoint))
             {
-                Debug.Log("checkpoint.TryGetComponent<Checkpoint>(out Checkpoint _checkpoint) true");
                 _checkpoint.Save();
             };
         }

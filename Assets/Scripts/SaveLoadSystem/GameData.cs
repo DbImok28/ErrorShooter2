@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class GameData
     public float playerZ;
 
     public SerializableDictionary<string, KeyData> keysData;
+    public SerializableDictionary<string, EnemyData> enemiesData;
 
     public float lateralSensitivity;
     public float verticalSensitivity;
@@ -27,6 +29,7 @@ public class GameData
         playerZ = 3.3f;
 
         keysData = new SerializableDictionary<string, KeyData>();
+        enemiesData = new SerializableDictionary<string, EnemyData>();
 
         lateralSensitivity = 4;
         verticalSensitivity = 4;
@@ -53,6 +56,26 @@ public class GameData
         KeyData keyData = new KeyData(id, isPickedUp, Name);
 
         keysData.Add(id, keyData);
+    }
+
+    public EnemyData LoadBot(string id)
+    {
+        EnemyData smth;
+        enemiesData.TryGetValue(id, out smth);
+
+        return smth;
+    }
+
+    public void SaveBot(string id, float x, float y, float z, float health)
+    {
+        if (enemiesData.ContainsKey(id))
+        {
+            enemiesData.Remove(id);
+        }
+
+        EnemyData enemyData = new EnemyData( x,y,z, health);
+
+        enemiesData.Add(id, enemyData);
     }
 
 

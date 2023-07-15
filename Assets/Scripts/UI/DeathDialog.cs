@@ -33,10 +33,4 @@ public class DeathDialog : MonoBehaviour
     {
         Hide();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

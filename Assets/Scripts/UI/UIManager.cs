@@ -140,6 +140,9 @@ public class UIManager : MonoBehaviour, ISaveable
     }
 
     public void ShowDeathDialog(GameObject _gameobject) {
+        RespawnButton.interactable = true;
+        MainMenuButton.interactable = true;
+
         deathDialog.gameObject.SetActive(true);
     }
 
@@ -155,17 +158,16 @@ public class UIManager : MonoBehaviour, ISaveable
 
     public void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        player.gameObject.GetComponent<MouseLook>().lockCursor = true;
         Cursor.visible = false;
     }
 
     public void UnlockCursor()
     {
-        Cursor.lockState = CursorLockMode.None;
+        player.gameObject.GetComponent<MouseLook>().lockCursor = false;
         Cursor.visible = true;
     }
 
-    //Каждый раз при спавне нового врага подписывать врага
     public void AddPauseHandler(IPauseHandler pauseHandler)
     {
         pauseManager.AddPauseHandler(pauseHandler);

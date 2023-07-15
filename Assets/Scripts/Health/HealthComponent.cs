@@ -1,3 +1,4 @@
+using ECM.Components;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -41,11 +42,6 @@ public class HealthComponent : MonoBehaviour, ISaveable
 
         OnDie.Invoke(this.gameObject);
 
-        if (GetComponent<PlayerController>())
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
     }
 
     public void Respawn()
@@ -53,17 +49,10 @@ public class HealthComponent : MonoBehaviour, ISaveable
         IsDead = false;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
-        Debug.Log("iskinematic"+gameObject.GetComponent<Rigidbody>().isKinematic);
-
         SetDefault();
 
         OnRespawn.Invoke();
 
-        if (GetComponent<PlayerController>())
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
     }
 
     public void SetDefault()

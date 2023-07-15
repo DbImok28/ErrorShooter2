@@ -17,7 +17,7 @@ namespace ECM.Components
 
         [Tooltip("Should the mouse cursor be locked (eg: hidden)?")]
         [SerializeField]
-        private bool _lockCursor = true;
+        private bool _lockCursor = false;
 
         [Tooltip("The keyboard key to unlock the mouse cursor.")]
         [SerializeField]
@@ -178,6 +178,9 @@ namespace ECM.Components
         public virtual void LookRotation(CharacterMovement movement, Transform cameraTransform)
         {
             if (isPaused)
+                return;
+
+            if (GetComponent<HealthComponent>().IsDead)
                 return;
 
             var yaw = Input.GetAxis("Mouse X") * lateralSensitivity;

@@ -40,6 +40,16 @@ public class BotSpawner : MonoBehaviour
 
             BotSpawned?.Invoke(bot);
         }
+
+        for (int i = 0; i < EnemyDistanceAmount; i++)
+        {
+            Vector3 randomPosition = PickRandomSpawnPosition();
+            float startHelath = 5;
+
+            GameObject bot = botDistanceFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath);
+
+            BotSpawned?.Invoke(bot);
+        }
     }
 
     public Vector3 PickRandomSpawnPosition()

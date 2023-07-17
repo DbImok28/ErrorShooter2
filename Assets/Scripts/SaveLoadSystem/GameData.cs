@@ -76,14 +76,14 @@ public class GameData
         return smth;
     }
 
-    public void SaveBot(string id, float x, float y, float z, float health)
+    public void SaveBot(string id, float x, float y, float z, float health, EnemyType type)
     {
         if (enemiesData.ContainsKey(id))
         {
             enemiesData.Remove(id);
         }
 
-        EnemyData enemyData = new EnemyData( x,y,z, health);
+        EnemyData enemyData = new EnemyData( x,y,z, health,type);
 
         enemiesData.Add(id, enemyData);
     }

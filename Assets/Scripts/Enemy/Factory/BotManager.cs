@@ -74,7 +74,8 @@ public class BotManager : MonoBehaviour, ISaveable
 
         foreach (GameObject bot in bots)
         {
-            string id = bot.GetComponent<EnemyInterface>().GetId();
+            //string id = bot.GetComponent<EnemyInterface>().GetId();
+            string id = System.Guid.NewGuid().ToString();
 
             float health = bot.GetComponent<HealthComponent>().CurrentHealth;
 
@@ -82,7 +83,20 @@ public class BotManager : MonoBehaviour, ISaveable
             float y = bot.transform.position.y;
             float z = bot.transform.position.z;
 
-            gameData.SaveBot(id, x, y,z, health);
+
+            EnemyType type;
+            if (bot.GetComponent<EnemyInterface>())
+            {
+                type = bot.GetComponent<EnemyInterface>().enemyType;
+            }
+            else
+            {
+                type = EnemyType.distant;
+            }
+
+            
+
+            gameData.SaveBot(id, x, y,z, health, type);
 
             Debug.Log("save bot");
         }

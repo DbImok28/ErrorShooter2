@@ -206,8 +206,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.2
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &1781898014639227589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2537,6 +2537,9 @@ MonoBehaviour:
   AmmoAmountChanged:
     m_PersistentCalls:
       m_Calls: []
+  MagazineReloaded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9100592144836690469
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,3 +2596,6 @@ MonoBehaviour:
   Magazine: {fileID: 607256028659136789}
   icon_active: {fileID: 0}
   icon_unactive: {fileID: 0}
+  TriggerPressed:
+    m_PersistentCalls:
+      m_Calls: []

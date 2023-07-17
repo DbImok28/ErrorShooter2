@@ -147,7 +147,6 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             }
             if (Input.GetKey(KeyCode.Return))
             {
-                Debug.Log("reload?");
                 ActiveWeapon.Magazine.Reload();
             }
             if (Input.GetKeyDown(KeyCode.E))

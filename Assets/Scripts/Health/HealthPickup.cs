@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPickup : MonoBehaviour
@@ -15,8 +13,7 @@ public class HealthPickup : MonoBehaviour
 
     private void PickUp(GameObject player)
     {
-        var healthComponent = player.GetComponent<HealthComponent>();
-        if (healthComponent != null)
+        if (player.TryGetComponent<HealthComponent>(out var healthComponent))
             healthComponent.Heal(HealAmount);
     }
 }

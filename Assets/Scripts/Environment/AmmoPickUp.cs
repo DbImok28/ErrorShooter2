@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AmmoPickUp : MonoBehaviour
@@ -17,11 +15,10 @@ public class AmmoPickUp : MonoBehaviour
 
     private void PickUp(GameObject player)
     {
-        var inventory = player.GetComponent<PlayerInventory>();
-        if (inventory != null)
+        if (player.TryGetComponent<PlayerInventory>(out var inventory))
         {
-            inventory.Weapons[0].GetComponentInChildren<Weapon>().Magazine.AmmoAmount += AkAmmoAmount;
-            inventory.Weapons[1].GetComponentInChildren<Weapon>().Magazine.AmmoAmount += ShotGunAmmoAmount;
+            inventory.Weapons[0].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(AkAmmoAmount);
+            inventory.Weapons[1].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(ShotGunAmmoAmount);
         }
     }
 }

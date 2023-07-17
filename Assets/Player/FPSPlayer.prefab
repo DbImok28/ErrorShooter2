@@ -430,7 +430,7 @@ MonoBehaviour:
   InteractableChanged:
     m_PersistentCalls:
       m_Calls: []
-  FPSCamera: {fileID: 0}
+  FPSCamera: {fileID: 7110427269003278202}
 --- !u!114 &8435454242434608002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,6 +452,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnRespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
     m_PersistentCalls:
       m_Calls: []
   OnGameStart:
@@ -511,6 +514,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnRespawn:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
     m_PersistentCalls:
       m_Calls: []
   OnGameStart:

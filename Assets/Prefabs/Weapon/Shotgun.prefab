@@ -384,8 +384,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8663799283514543289}
   - component: {fileID: 1917344988098459936}
-  - component: {fileID: 7927180741639795554}
   - component: {fileID: 4971038140230594382}
+  - component: {fileID: 1440237503364065413}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -438,19 +438,6 @@ MonoBehaviour:
   TriggerPressed:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7927180741639795554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736716095988791440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33c838386b8d0854ea187186e4148d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shoot: {fileID: 8300000, guid: aecba2282aeac7e4ba2557306621b638, type: 3}
 --- !u!82 &4971038140230594382
 AudioSource:
   m_ObjectHideFlags: 0
@@ -547,6 +534,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1440237503364065413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6736716095988791440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2a25bf97fac8549afc7f0abe4c6c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoot: {fileID: 8300000, guid: 1db1645e64a952242a49f1579556ab61, type: 3}
 --- !u!1 &7110708763316424419
 GameObject:
   m_ObjectHideFlags: 0

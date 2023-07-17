@@ -59,9 +59,13 @@ public class BotSpawner : MonoBehaviour
         float minZ = BotSpawnTerritory.bounds.min.z;
         float maxZ = BotSpawnTerritory.bounds.max.z;
 
+        Debug.Log($"minX : {minX} maxX: {maxX} minZ: {minZ} maxZ : {maxZ}");
+
         float rX = Random.Range(minX, maxX);
         float rZ = Random.Range(minZ, maxZ);
         float y = 0;
+
+        Debug.Log($"rx : {rX} rZ : {rZ}");
 
         return new Vector3(rX, y, rZ);
     }

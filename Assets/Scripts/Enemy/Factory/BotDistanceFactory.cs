@@ -8,9 +8,9 @@ public class BotDistanceFactory : BotFactory
     {
         var prefab = Resources.Load<GameObject>("Prefabs/Bots/EnemyDistant");
 
-        var go = GameObject.Instantiate(prefab, new Vector3(x, y, x), Quaternion.identity);
+        var go = GameObject.Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity);
 
-        go.GetComponent<HealthComponent>().CurrentHealth =10;
+        go.GetComponent<HealthComponent>().CurrentHealth = health;
 
         return go;
     }

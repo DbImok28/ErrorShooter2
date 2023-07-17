@@ -726,11 +726,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
-    - target: {fileID: 3350520855532217268, guid: a3971036362460e42b32f2312423bb87,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7927180741639795554, guid: a3971036362460e42b32f2312423bb87, type: 3}
     - {fileID: 4971038140230594382, guid: a3971036362460e42b32f2312423bb87, type: 3}

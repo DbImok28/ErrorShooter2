@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class KeyForDoor : MonoBehaviour, ISaveable
 {
@@ -9,10 +10,18 @@ public class KeyForDoor : MonoBehaviour, ISaveable
 
     public bool isPickedUp;
 
+    public UnityEvent<GameObject> OnPickUp;
+
+    public void PickUp(GameObject player)
+    {
+        OnPickUp.Invoke(player);
+        Hide();
+    }
+
     public void Hide()
     {
         //Debug.Log("hide");
-        gameObject.GetComponentInChildren<Renderer>().enabled = false; 
+        gameObject.GetComponentInChildren<Renderer>().enabled = false;
     }
 
     public void LoadData(GameData gameData)
@@ -36,7 +45,7 @@ public class KeyForDoor : MonoBehaviour, ISaveable
 
         KeyData keyData = gameData.LoadKey(KeyName);
 
-        if (keyData!=null)
+        if (keyData != null)
         {
             //Debug.Log("keyData!=null");
             isPickedUp = keyData.isPickedUp;
@@ -48,13 +57,13 @@ public class KeyForDoor : MonoBehaviour, ISaveable
                 Hide();
         }
 
-        
+
     }
 
     public void SaveData(ref GameData gameData)
     {
         //Debug.Log("key for door save data");
 
-        gameData.SaveKey(KeyName, isPickedUp,KeyName);
+        gameData.SaveKey(KeyName, isPickedUp, KeyName);
     }
 }

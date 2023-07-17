@@ -9,12 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4002112770470652061}
-  - component: {fileID: 4002112770470652062}
   - component: {fileID: 6464748969684219171}
   - component: {fileID: 7490590118648957056}
   - component: {fileID: 41085763886114059}
+  - component: {fileID: 6650490977170426992}
+  - component: {fileID: 3688017337817286988}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,20 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4002112770470652062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4002112770470652063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b69550882450f3418d41765a8c414bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: Key_1
-  isPickedUp: 0
 --- !u!65 &6464748969684219171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,7 +49,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7490590118648957056
 MonoBehaviour:
@@ -85,7 +72,7 @@ MonoBehaviour:
   InteractableMouseLeave:
     m_PersistentCalls:
       m_Calls: []
-  ItemInfo: Key for door
+  ItemInfo: Ammo
 --- !u!114 &41085763886114059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +87,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutlineColor: {r: 1, g: 0.7072705, b: 0, a: 1}
   OutlineWidth: 10
+--- !u!114 &6650490977170426992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002112770470652063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b69550882450f3418d41765a8c414bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyName: $Ammo_0
+  isPickedUp: 0
+  OnPickUp:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3688017337817286988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002112770470652063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5574e67f4bacd5d418a5d0abfee3e75a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShotGunAmmoAmount: 2
+  AkAmmoAmount: 10
 --- !u!1 &4002112771191881265
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +130,7 @@ GameObject:
   - component: {fileID: 4002112771191881269}
   - component: {fileID: 4002112771191881270}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,14 +143,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4002112771191881265}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4002112770470652061}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &4002112771191881269
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -140,7 +158,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4002112771191881265}
-  m_Mesh: {fileID: 4821974255002996250, guid: 120f56af9f0462446bac5794f0272535, type: 3}
+  m_Mesh: {fileID: 8197612193290513220, guid: 50eaf328f544c634d9496b8bdc8fcfc0, type: 3}
 --- !u!23 &4002112771191881270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -161,7 +179,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1e5687ae64331f44ad3ad9ecca758a8, type: 2}
+  - {fileID: 2100000, guid: 2b64f64af85f7cb439d9ea8926a03f3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,7 +301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Press "R" to pick up the key'
+  m_text: ' Press "R" to pick up ammo'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -8,7 +8,7 @@ using System;
 
 public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 {
-    
+
     public float ÑanReadNoteRadius;
     public float CanPickUpItemRadius = 2;
     public float CanOpenDoorRadius = 2;
@@ -20,7 +20,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
     public UnityEvent<Interactable> InteractableChanged;
 
-    
+
 
     private PlayerInventory inventory;
 
@@ -37,7 +37,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
         {
             FPSCamera = GetComponentInChildren<Camera>();
         }
-        
+
 
 
         //InteractableAssigned += InvokeMsg;
@@ -58,7 +58,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
             //Àíèìàöèÿ ïîäáîðà êëþ÷à
 
             key.GetComponent<KeyForDoor>().isPickedUp = true;
-            key.GetComponent<KeyForDoor>().Hide();
+            key.GetComponent<KeyForDoor>().PickUp(gameObject);
         }
     }
 
@@ -67,10 +67,10 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
         Debug.Log("KeyIsNear");
 
         var colliders = Physics.OverlapSphere(gameObject.transform.position, CanPickUpItemRadius);
-          
+
         foreach (var collider in colliders)
         {
-            if(collider.gameObject.GetComponent<KeyForDoor>())
+            if (collider.gameObject.GetComponent<KeyForDoor>())
             {
                 key = collider.gameObject;
                 return true;
@@ -88,7 +88,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
         GameObject keyDoor;
 
-        if(KeyDoorIsNear(out keyDoor))
+        if (KeyDoorIsNear(out keyDoor))
         {
             string matchingKey;
 
@@ -130,7 +130,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
         {
             string _matchingKey;
 
-            if (_keyDoor.PlayerHasMatchingKey(inventory.KeysNames, out  _matchingKey))
+            if (_keyDoor.PlayerHasMatchingKey(inventory.KeysNames, out _matchingKey))
             {
                 matchingKey = _matchingKey;
                 return true;
@@ -151,7 +151,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
         {
             if (collider.gameObject.GetComponent<Checkpoint>())
             {
-                
+
                 checkpoint = collider.gameObject;
                 return true;
 
@@ -193,7 +193,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
                 //Debug.Log("objectHit.gameObject.TryGetComponent(out Interactable interactable) START");
                 if (currentInteractable == interactable.gameObject)
                 {
-                   return;
+                    return;
                 }
                 if (currentInteractable)
                 {
@@ -201,7 +201,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
                 }
 
-                
+
                 currentInteractable = interactable.gameObject;
                 currentInteractable.GetComponent<Interactable>().Interact();
 
@@ -211,7 +211,7 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
                 //Debug.Log("environment " + Goid);
 
-                
+
                 //Debug.Log("Physics.Raycast(ray, out hit, CanInteractRadius) END");
             }
             else

@@ -16,8 +16,8 @@ public class Projectile : MonoBehaviour
         transform.position += movementSpeed * Time.deltaTime * transform.forward;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        Destroy(gameObject);
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    Destroy(gameObject);
+    //}
 }

@@ -50,10 +50,12 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
         if (index >= 0 && index < Inventory.Weapons.Count)
         {
             ActiveWeaponIndex = index;
-            var weaponGameObject = Instantiate(Inventory.Weapons[index], WeaponSocket.transform);
+            var weaponGameObject = Inventory.Weapons[index];
+            weaponGameObject.SetActive(true);
+
             if (!AssignWeaponToSocket(weaponGameObject))
             {
-                Destroy(weaponGameObject);
+                weaponGameObject.SetActive(false);
                 return false;
             }
 
@@ -67,7 +69,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
     {
         if (ActiveWeaponGameObject != null)
         {
-            Destroy(ActiveWeaponGameObject);
+            ActiveWeaponGameObject.SetActive(false);
             ActiveWeaponGameObject = null;
             ActiveWeapon = null;
         }

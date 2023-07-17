@@ -1,5 +1,6 @@
 using Assets.Scripts.Weapon;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour, ITriggerPull
@@ -12,6 +13,8 @@ public class Weapon : MonoBehaviour, ITriggerPull
 
     public Sprite icon_active;
     public Sprite icon_unactive;
+
+    public UnityEvent TriggerPressed;
 
 
     private int CurrentTriggerPull = 0;
@@ -28,6 +31,8 @@ public class Weapon : MonoBehaviour, ITriggerPull
     public void Press()
     {
         TriggerPulls[CurrentTriggerPull].Press();
+
+        TriggerPressed?.Invoke();
     }
 
     public void Release()

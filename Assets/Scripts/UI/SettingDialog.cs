@@ -22,7 +22,7 @@ public class SettingDialog : MonoBehaviour
 
     public void SetVerticalSensitivity(float value)
     {
-        settingsManager.lateralSensitivity = value;
+        settingsManager.verticalSensitivity = value;
     }
 
     public void SetMaxPitchAngle(float value)

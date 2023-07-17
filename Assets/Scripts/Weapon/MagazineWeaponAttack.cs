@@ -15,6 +15,7 @@ namespace Assets.Scripts.Weapon
         public int AmmoAmount = 0;
 
         public UnityEvent<MagazineWeaponAttack> AmmoAmountChanged;
+        public UnityEvent MagazineReloaded;
 
         public MagazineWeaponAttack(WeaponAttack subWeaponAttack, int magazineCapacity = 30)
         {
@@ -55,6 +56,8 @@ namespace Assets.Scripts.Weapon
         public void Reload()
         {
             AmmoAmount = ChargeAmmo(AmmoAmount);
+
+            MagazineReloaded?.Invoke();
         }
     }
 }

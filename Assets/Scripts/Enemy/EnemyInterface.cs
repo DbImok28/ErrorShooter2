@@ -20,6 +20,8 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
 
     public float rotationSpeed = 0.2f;
 
+    public EnemyType enemyType;
+
     private float spawnRate = 2f;
     float nextSpawn = 1.5f;
 
@@ -30,6 +32,7 @@ public abstract class EnemyInterface : MonoBehaviour, IPauseHandler
     private bool isPaused;
 
     private string id;
+    
 
 
 

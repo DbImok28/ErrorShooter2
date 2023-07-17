@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Weapon
 {
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Weapon
         [SerializeField] private GameObject[] ProjectileShootSources;
         [SerializeField] private GameObject ProjectileGameObject;
         [SerializeField] private bool ShowProjectileSphere = true;
+
+        public UnityEvent OnAttack;
 
         private void Start()
         {
@@ -69,7 +72,7 @@ namespace Assets.Scripts.Weapon
                         //projectile.transform.SetPositionAndRotation(source.transform.position, source.transform.rotation);
                     }
                 }
-
+                OnAttack.Invoke();
                 return true;
             }
             return false;

@@ -10,6 +10,8 @@
 /[Aa]ssets/Fonts
 /[Aa]ssets/Sci-Fi UI/
 /[Aa]ssets/JMO Assets/
+/[Aa]ssets/Resources/
+/[Aa]ssets/Sounds/
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

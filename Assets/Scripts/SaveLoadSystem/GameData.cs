@@ -58,6 +58,16 @@ public class GameData
         keysData.Add(id, keyData);
     }
 
+    public void ClearAllBots()
+    {
+        Debug.Log("clear all bots");
+
+        enemiesData.Clear();
+
+        Debug.Log($"cleared list length : {enemiesData.Count}");
+        enemiesData = new SerializableDictionary<string, EnemyData>();
+    }
+
     public EnemyData LoadBot(string id)
     {
         EnemyData smth;

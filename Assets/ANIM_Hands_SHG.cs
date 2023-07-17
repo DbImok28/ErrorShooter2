@@ -1,3 +1,4 @@
+using Assets.Scripts.Weapon;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,16 @@ public class ANIM_Hands_SHG : MonoBehaviour
     public Animator anim;
     public Vector3 OldPosition;
     private string currentAnim;
-    // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
         OldPosition = transform.position;
+        var weapon = GetComponentInChildren<MagazineWeaponAttack>();
+        weapon.MagazineReloaded.AddListener(PlayReloadAnimation);
+        weapon.OnAttack.AddListener(PlayFireAnimation);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (OldPosition == transform.position)
@@ -29,17 +32,16 @@ public class ANIM_Hands_SHG : MonoBehaviour
         {
             anim.SetInteger("Walk", 2);
         }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            anim.SetTrigger("Reload");
-        }
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            anim.SetTrigger("Fire");
-        }
         OldPosition = transform.position;
+    }
 
+    void PlayFireAnimation()
+    {
+        anim.SetTrigger("Fire");
+    }
 
+    void PlayReloadAnimation()
+    {
+        anim.SetTrigger("Reload");
     }
 }

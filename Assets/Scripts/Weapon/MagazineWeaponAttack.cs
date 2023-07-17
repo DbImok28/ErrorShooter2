@@ -17,6 +17,7 @@ namespace Assets.Scripts.Weapon
         public UnityEvent<MagazineWeaponAttack> AmmoAmountChanged;
         public UnityEvent MagazineReloaded;
         public UnityEvent<int> OnIncreaseAmmo;
+        public UnityEvent OnAttack;
 
         public MagazineWeaponAttack(WeaponAttack subWeaponAttack, int magazineCapacity = 30)
         {
@@ -28,7 +29,6 @@ namespace Assets.Scripts.Weapon
         {
             if (AmmoInMagazine == 0)
             {
-                print("No ammo - press Enter to reload");
                 return false;
             }
             --AmmoInMagazine;
@@ -36,6 +36,7 @@ namespace Assets.Scripts.Weapon
             AmmoAmountChanged?.Invoke(this);
 
             WeaponAttackDecorator.Attack(position, direction);
+            OnAttack.Invoke();
             return true;
         }
 
@@ -57,8 +58,8 @@ namespace Assets.Scripts.Weapon
         public void Reload()
         {
             AmmoAmount = ChargeAmmo(AmmoAmount);
-
-            MagazineReloaded?.Invoke();
+            if (AmmoAmount > 0)
+                MagazineReloaded?.Invoke();
         }
 
         public void IncreaseAmmo(int ammo)

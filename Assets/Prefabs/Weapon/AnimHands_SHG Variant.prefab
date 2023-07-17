@@ -413,13 +413,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 4501690370299295334}
-  MagazineCapacity: 30
-  AmmoInMagazine: 30
+  MagazineCapacity: 2
+  AmmoInMagazine: 2
   AmmoAmount: 300
   AmmoAmountChanged:
     m_PersistentCalls:
       m_Calls: []
   MagazineReloaded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIncreaseAmmo:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6626535369404530922

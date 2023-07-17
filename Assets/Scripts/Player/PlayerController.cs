@@ -91,16 +91,16 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             if (AssignWeaponToSocket(index))
             {
                 // Show weapon Anim
-                
+
 
                 EndSwapWeapon();
 
-                if (ActiveWeapon!=null)
+                if (ActiveWeapon != null)
                 {
                     WeaponChanged?.Invoke(ActiveWeapon);
                 }
 
-                
+
             }
         }
     }
@@ -116,11 +116,11 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
         if (isPaused)
             return;
 
-        
+
         if (GetComponent<HealthComponent>().IsDead)
             return;
 
-        
+
 
         moveDirection = new Vector3
         {
@@ -145,7 +145,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             {
                 ActiveWeapon.Release();
             }
-            if (Input.GetKey(KeyCode.Return))
+            if (Input.GetKey(KeyCode.R))
             {
                 ActiveWeapon.Magazine.Reload();
             }
@@ -153,11 +153,11 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             {
                 SwapToNextWeapon();
 
-                
+
             }
         }
 
-        
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             environmentInteraction.PickUpKey();
@@ -174,7 +174,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
     }
 
-   
+
     public void Start()
     {
         if (Inventory == null)
@@ -197,7 +197,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
     public void LoadData(GameData gameData)
     {
-        transform.position=new Vector3(gameData.playerX, gameData.playerY, gameData.playerZ);
+        transform.position = new Vector3(gameData.playerX, gameData.playerY, gameData.playerZ);
     }
 
     public void SetPaused(bool isPaused)

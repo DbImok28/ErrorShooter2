@@ -5,8 +5,27 @@ using UnityEngine;
 public class BotManager : MonoBehaviour, ISaveable
 {
     private List<GameObject> bots=new List<GameObject>();
+    private List<BotSpawner> spawners = new List<BotSpawner>();
 
-    private void SpawnBot(BotFactory botFactory,float x, float y, float z, float health)
+    private void Start()
+    {
+        FindSpawners();
+    }
+    private void FindSpawners()
+    {
+        var _spawners = FindObjectsOfType<BotSpawner>();
+
+        foreach(BotSpawner _spawner in _spawners)
+        {
+            spawners.Add(_spawner);
+
+            _spawner.BotSpawned.AddListener(AddBot);
+        }
+
+        //Debug.Log("spawners length " + spawners.Count);
+    }
+
+    private void LoadBot(BotFactory botFactory,float x, float y, float z, float health)
     {
         GameObject bot = botFactory.FactoryMethod(x,y,z,health);
 
@@ -18,13 +37,17 @@ public class BotManager : MonoBehaviour, ISaveable
     public void RemoveBot(GameObject bot)
     {
         bots.Remove(bot);
+
+        Debug.Log($"REMOVE bots length : {bots.Count}");
     }
 
     public void AddBot(GameObject bot)
     {
         bots.Add(bot);
 
-        Debug.Log($"bots length : {bots.Count}");
+        bot.GetComponent<HealthComponent>().OnDie.AddListener(RemoveBot);
+
+        Debug.Log($"ADD bots length : {bots.Count}");
     }
 
     public void LoadData(GameData gameData)
@@ -32,14 +55,22 @@ public class BotManager : MonoBehaviour, ISaveable
 
         foreach (KeyValuePair<string, EnemyData> entry in gameData.enemiesData) {
 
-            BotFactory botFactory = new BotDistanceFactory();
+            BotFactory botFactory = new BotMeleeFactory();
 
-            SpawnBot(botFactory, entry.Value.enemyX, entry.Value.enemyY, entry.Value.enemyZ, entry.Value.health);
+            LoadBot(botFactory, entry.Value.enemyX, entry.Value.enemyY, entry.Value.enemyZ, entry.Value.health);
+
+            Debug.Log("load bot");
         }
     }
 
     public void SaveData(ref GameData gameData)
     {
+        //Debug.Log("bot manager savedata");
+
+        gameData.enemiesData.Clear();
+        gameData.enemiesData = new SerializableDictionary<string, EnemyData>();
+
+        //Debug.Log($"cleared list length : {gameData.enemiesData.Count}");
 
         foreach (GameObject bot in bots)
         {
@@ -52,15 +83,9 @@ public class BotManager : MonoBehaviour, ISaveable
             float z = bot.transform.position.z;
 
             gameData.SaveBot(id, x, y,z, health);
+
+            Debug.Log("save bot");
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //рандомно выбрать фабрику
-
-        BotFactory bf = new BotMeleeFactory();
-
-        SpawnBot(bf, 0, 0, 0, 10);
-    }
 }

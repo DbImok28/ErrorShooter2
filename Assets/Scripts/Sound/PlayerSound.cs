@@ -36,19 +36,19 @@ public class PlayerSound : MonoBehaviour
 
     public void PlayDamage(HealthComponent _health, float _damage)
     {
-        Debug.Log("звук дамага");
+        //Debug.Log("звук дамага");
         source.PlayOneShot(damage);
     }
 
     public void PlayDeath(GameObject _go)
     {
-        Debug.Log("звук смерти");
+        //Debug.Log("звук смерти");
         source.PlayOneShot(death);
     }
 
     public void PlayWeaponSwap(Weapon w)
     {
-        Debug.Log("звук смерти");
+        //Debug.Log("звук смерти");
         source.PlayOneShot(swap_weapon);
     }
 }

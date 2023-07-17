@@ -63,7 +63,7 @@ public class BotSpawner : MonoBehaviour
 
         float rX = Random.Range(minX, maxX);
         float rZ = Random.Range(minZ, maxZ);
-        float y = 0;
+        float y = 2;
 
         Debug.Log($"rx : {rX} rZ : {rZ}");
 

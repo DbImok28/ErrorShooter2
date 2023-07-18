@@ -66,9 +66,12 @@ namespace Assets.Scripts.Weapon
         {
             AmmoAmount += ammo;
             OnIncreaseAmmo.Invoke(ammo);
-            
+
             AmmoAmountChanged?.Invoke(this);
 
-    }
+            if (AmmoAmount < MagazineCapacity)
+                Reload();
+
+        }
     }
 }

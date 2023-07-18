@@ -13,6 +13,7 @@ namespace Assets.Scripts.Weapon
         public TriggerPullWithDelay(WeaponAimedAttack aimedAttack, float fireRate = 120) : base(aimedAttack)
         {
             FireRate = fireRate;
+            DelayComplite = true;
         }
 
         public override void Press()

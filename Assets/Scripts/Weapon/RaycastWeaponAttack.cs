@@ -24,7 +24,7 @@ namespace Assets.Scripts.Weapon
                 DebugShootPointSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 Destroy(DebugShootPointSphere.GetComponent<Collider>());
                 DebugShootPointSphere.GetComponent<MeshRenderer>().material.color = Color.green;
-                DebugShootPointSphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                DebugShootPointSphere.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             }
         }
 

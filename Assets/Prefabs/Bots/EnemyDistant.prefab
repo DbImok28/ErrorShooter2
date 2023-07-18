@@ -138,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38afb083a49b0bb40909a5d23529bfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 10
-  MaxHealth: 10
+  CurrentHealth: 5
+  MaxHealth: 5
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -261,9 +261,6 @@ MonoBehaviour:
   ProjectileGameObject: {fileID: 8861459680707968152, guid: e44f68bbbd584ae4baa96373260c2d4c,
     type: 3}
   ShowProjectileSphere: 1
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4066010921001504993
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AimedAttack: {fileID: 6833604647061313129}
-  FireRate: 60
+  FireRate: 20
 --- !u!1 &4401849174077985440
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,6 +2347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 1528810958673309033}
   MagazineCapacity: 2147483647
+  TimeToReload: 0
   AmmoInMagazine: 2147483647
   AmmoAmount: 2147483647
   AmmoAmountChanged:
@@ -2358,7 +2356,13 @@ MonoBehaviour:
   MagazineReloaded:
     m_PersistentCalls:
       m_Calls: []
+  AmmoReleased:
+    m_PersistentCalls:
+      m_Calls: []
   OnIncreaseAmmo:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &9100592144836690469

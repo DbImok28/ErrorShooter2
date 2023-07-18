@@ -70,8 +70,8 @@ MonoBehaviour:
   agent: {fileID: 229353154969662296}
   target: {fileID: 0}
   distance: 10
-  distanceForAttake: 10
-  distanceForFastAttake: 5
+  distanceForAttake: 5
+  distanceForFastAttake: 2
   EnemyHP: {fileID: -5959924552358124020}
   points: []
   destPoint: 0
@@ -235,12 +235,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 530998836778431266}
   MagazineCapacity: 30
+  TimeToReload: 0
   AmmoInMagazine: 30
   AmmoAmount: 300
   AmmoAmountChanged:
     m_PersistentCalls:
       m_Calls: []
   MagazineReloaded:
+    m_PersistentCalls:
+      m_Calls: []
+  AmmoReleased:
     m_PersistentCalls:
       m_Calls: []
   OnIncreaseAmmo:
@@ -381,8 +385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47bef2ab9358c646bb68917fb920289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 1
-  MaxShootDistance: 4000
+  Damage: 2
+  MaxShootDistance: 200
   DebugShootSource: {fileID: 5722214126554251589}
   ShowDebugSphere: 0
   ProjectileShootSources: []

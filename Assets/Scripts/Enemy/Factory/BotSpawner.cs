@@ -46,9 +46,9 @@ public class BotSpawner : MonoBehaviour
         for (int i = 0; i < EnemeMeeleAmount; i++)
         {
             Vector3 randomPosition = PickRandomSpawnPosition();
-            float startHelath = 5;
+            float startHelath = 8;
 
-            GameObject bot = botMeleeFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath);
+            GameObject bot = botMeleeFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath, Quaternion.identity);
             LookAt(bot);
 
             BotSpawned?.Invoke(bot);
@@ -57,9 +57,9 @@ public class BotSpawner : MonoBehaviour
         for (int i = 0; i < EnemyDistanceAmount; i++)
         {
             Vector3 randomPosition = PickRandomSpawnPosition();
-            float startHelath = 5;
+            float startHelath = 4;
 
-            GameObject bot = botDistanceFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath);
+            GameObject bot = botDistanceFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath, Quaternion.identity);
             LookAt(bot);
 
             BotSpawned?.Invoke(bot);

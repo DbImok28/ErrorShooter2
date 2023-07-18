@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BotManager : MonoBehaviour, ISaveable
 {
-    private List<GameObject> bots=new List<GameObject>();
+    private List<GameObject> bots = new List<GameObject>();
     private List<BotSpawner> spawners = new List<BotSpawner>();
 
     private void Start()
@@ -15,7 +15,7 @@ public class BotManager : MonoBehaviour, ISaveable
     {
         var _spawners = FindObjectsOfType<BotSpawner>();
 
-        foreach(BotSpawner _spawner in _spawners)
+        foreach (BotSpawner _spawner in _spawners)
         {
             spawners.Add(_spawner);
 
@@ -25,9 +25,9 @@ public class BotManager : MonoBehaviour, ISaveable
         //Debug.Log("spawners length " + spawners.Count);
     }
 
-    private void LoadBot(BotFactory botFactory,float x, float y, float z, float health)
+    private void LoadBot(BotFactory botFactory, float x, float y, float z, float health)
     {
-        GameObject bot = botFactory.FactoryMethod(x,y,z,health);
+        GameObject bot = botFactory.FactoryMethod(x, y, z, health, Quaternion.identity);
 
         AddBot(bot);
 
@@ -53,7 +53,8 @@ public class BotManager : MonoBehaviour, ISaveable
     public void LoadData(GameData gameData)
     {
 
-        foreach (KeyValuePair<string, EnemyData> entry in gameData.enemiesData) {
+        foreach (KeyValuePair<string, EnemyData> entry in gameData.enemiesData)
+        {
 
             BotFactory botFactory = new BotMeleeFactory();
 
@@ -94,9 +95,9 @@ public class BotManager : MonoBehaviour, ISaveable
                 type = EnemyType.distant;
             }
 
-            
 
-            gameData.SaveBot(id, x, y,z, health, type);
+
+            gameData.SaveBot(id, x, y, z, health, type);
 
             Debug.Log("save bot");
         }

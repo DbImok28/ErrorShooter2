@@ -131,7 +131,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             z = Input.GetAxisRaw("Vertical")
         };
 
-        if(moveDirection.x!=0 || moveDirection.z != 0)
+        if (moveDirection.x != 0 || moveDirection.z != 0)
         {
             PlayerIsMoving = true;
         }
@@ -173,8 +173,6 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             if (Input.GetKeyDown(KeyCode.E))
             {
                 SwapToNextWeapon();
-
-
             }
         }
 

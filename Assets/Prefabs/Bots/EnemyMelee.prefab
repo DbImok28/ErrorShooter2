@@ -113,8 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38afb083a49b0bb40909a5d23529bfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 20
-  MaxHealth: 20
+  CurrentHealth: 10
+  MaxHealth: 10
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -244,6 +244,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnIncreaseAmmo:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttack:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &2901668517558234470
@@ -385,9 +388,6 @@ MonoBehaviour:
   ProjectileShootSources: []
   ProjectileGameObject: {fileID: 0}
   ShowProjectileSphere: 0
-  OnAttack:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6226227513793962510
 GameObject:
   m_ObjectHideFlags: 0

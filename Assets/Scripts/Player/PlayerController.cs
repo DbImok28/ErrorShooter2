@@ -131,7 +131,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             z = Input.GetAxisRaw("Vertical")
         };
 
-        if (moveDirection.x != 0 || moveDirection.z != 0)
+        if (moveDirection.x != 0 || moveDirection.z != 0 && !GetComponent<HealthComponent>().IsDead)
         {
             PlayerIsMoving = true;
         }
@@ -142,7 +142,7 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
         run = Input.GetButton("Fire3");
 
-        if (run)
+        if (run && !GetComponent<HealthComponent>().IsDead)
         {
             PlayerIsMoving = false;
             PlayerIsRunning = true;

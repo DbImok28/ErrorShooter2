@@ -25,8 +25,6 @@ public class HealthPickup : MonoBehaviour, IPickableItem
 
         isPickedUp = true;
 
-        Debug.Log("health pick up");
-
         HideAfterPickUp();
     }
 

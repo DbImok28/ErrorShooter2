@@ -51,6 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyName: Key_1
   isPickedUp: 0
+  OnKeyPickUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &6464748969684219171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85,7 +88,9 @@ MonoBehaviour:
   InteractableMouseLeave:
     m_PersistentCalls:
       m_Calls: []
-  ItemInfo: Key for door
+  ItemInfo: "\u041A\u043B\u044E\u0447 \u043E\u0442 \u0434\u0432\u0435\u0440\u0438.
+    \u041D\u0430\u0436\u043C\u0438\u0442\u0435 \"E\", \u0447\u0442\u043E\u0431\u044B
+    \u043F\u043E\u0434\u043D\u044F\u0442\u044C"
 --- !u!114 &41085763886114059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1682641bf42eec54f932ce2ceef5eff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OutlineColor: {r: 1, g: 0.7072705, b: 0, a: 1}
-  OutlineWidth: 10
+  OutlineColor: {r: 0.10980392, g: 0.6039216, b: 0.2784314, a: 1}
+  OutlineWidth: 20
 --- !u!1 &4002112771191881265
 GameObject:
   m_ObjectHideFlags: 0

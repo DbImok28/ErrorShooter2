@@ -18,6 +18,8 @@ public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
         PlayerInventory inventory = player.GetComponentInChildren<PlayerEnvironmentInteraction>().GetInventory();
         inventory.AddKey(this.gameObject);
 
+        isPickedUp = true;
+
         HideAfterPickUp();
     }
 

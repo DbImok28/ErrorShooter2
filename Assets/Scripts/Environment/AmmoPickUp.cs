@@ -17,8 +17,9 @@ public class AmmoPickUp : MonoBehaviour
     {
         if (player.TryGetComponent<PlayerInventory>(out var inventory))
         {
-            inventory.Weapons[0].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(AkAmmoAmount);
-            inventory.Weapons[1].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(ShotGunAmmoAmount);
+            inventory.Weapons[0].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(ShotGunAmmoAmount);
+            inventory.Weapons[1].GetComponentInChildren<Weapon>().Magazine.IncreaseAmmo(AkAmmoAmount);
         }
+        print("Ammo");
     }
 }

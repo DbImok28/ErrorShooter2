@@ -17,7 +17,8 @@ public class PlayerSound : MonoBehaviour
     private PlayerEnvironmentInteraction pei;
     private PlayerController player;
 
-    public void Init() {
+    public void Init()
+    {
         health = FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<HealthComponent>();
         pei = FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<PlayerEnvironmentInteraction>();
         player = FindObjectOfType<PlayerController>();
@@ -25,25 +26,25 @@ public class PlayerSound : MonoBehaviour
 
     private void Update()
     {
-        if (player.PlayerIsMoving && !stepSource.isPlaying) 
-        { 
-            stepSource.Play();
-            Debug.Log("play steps");
-        }// if player is moving and audiosource is not playing play it
-        if (!player.PlayerIsMoving) 
+        if (player.PlayerIsMoving && !stepSource.isPlaying)
         {
-            Debug.Log("dont play steps");
-            stepSource.Stop(); 
+            stepSource.Play();
+            //Debug.Log("play steps");
+        }// if player is moving and audiosource is not playing play it
+        if (!player.PlayerIsMoving)
+        {
+            //Debug.Log("dont play steps");
+            stepSource.Stop();
         }
 
         if (player.PlayerIsRunning && !runSource.isPlaying)
         {
             runSource.Play();
-            Debug.Log("play run");
+            //Debug.Log("play run");
         }// if player is moving and audiosource is not playing play it
         if (!player.PlayerIsRunning)
         {
-            Debug.Log("dont play steps");
+            //Debug.Log("dont play steps");
             runSource.Stop();
         }
 
@@ -60,7 +61,7 @@ public class PlayerSound : MonoBehaviour
         health.OnTakeDamage.AddListener(PlayDamage);
         health.OnDie.AddListener(PlayDeath);
         player.WeaponChanged.AddListener(PlayWeaponSwap);
-        
+
     }
 
     public void PlayDamage(HealthComponent _health, float _damage)

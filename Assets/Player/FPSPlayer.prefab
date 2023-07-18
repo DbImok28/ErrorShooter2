@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4a7b6dca62ece4cb78b603cb08948c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lockCursor: 1
+  _lockCursor: 0
   _unlockCursorKey: 0
   _lateralSensitivity: 4
   _verticalSensitivity: 4

@@ -59,7 +59,7 @@ namespace Assets.Scripts.Weapon
                     sphere.transform.localPosition = hit.point;
                     sphere.transform.localRotation = Quaternion.identity;
                     sphere.GetComponent<Renderer>().material.color = Color.grey;
-                    Destroy(sphere, 5);
+                    Destroy(sphere, 1);
                 }
 
                 if (ShowProjectileSphere)

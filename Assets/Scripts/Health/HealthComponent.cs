@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class HealthComponent : MonoBehaviour, ISaveable
 {
     [Header("Parameters")]
-    public float CurrentHealth = 10.0f;
-    public float MaxHealth = 10.0f;
+    public float CurrentHealth = 20.0f;
+    public float MaxHealth = 20.0f;
     public bool IsDead { get; private set; } = false;
 
     [Header("Events")]

@@ -229,7 +229,6 @@ GameObject:
   - component: {fileID: 8435454242434608002}
   - component: {fileID: 1295573164704159077}
   - component: {fileID: 2715617505186280549}
-  - component: {fileID: 5176354667075736894}
   - component: {fileID: 1302907314401124302}
   - component: {fileID: 2928373065957765818}
   - component: {fileID: 3153445788365136568}
@@ -497,35 +496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00cef97587eef041a66d41ed54d0fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5176354667075736894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7110427270280320919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38afb083a49b0bb40909a5d23529bfde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 200
-  MaxHealth: 200
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDie:
-    m_PersistentCalls:
-      m_Calls: []
-  OnRespawn:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  OnGameStart:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!82 &1302907314401124302
 AudioSource:
   m_ObjectHideFlags: 0

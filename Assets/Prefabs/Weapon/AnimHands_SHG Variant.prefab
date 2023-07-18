@@ -33,11 +33,6 @@ Transform:
   m_Children:
   - {fileID: 4297345071623122253}
   - {fileID: 4902345095041980002}
-  - {fileID: 4558811161437458197}
-  - {fileID: 925430717179643069}
-  - {fileID: 6064194531718095192}
-  - {fileID: 6202474848524555064}
-  - {fileID: 12552935088622589}
   m_Father: {fileID: 5427644025853816193}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,37 +168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoot: {fileID: 8300000, guid: 1db1645e64a952242a49f1579556ab61, type: 3}
---- !u!1 &4525361620634805048
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6064194531718095192}
-  m_Layer: 0
-  m_Name: ProjectileShootSource3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6064194531718095192
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525361620634805048}
-  m_LocalRotation: {x: -0.041305166, y: -0, z: -0, w: 0.9991466}
-  m_LocalPosition: {x: -0.2524, y: 0.38900006, z: -0.104499996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3646610130618177974}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: -4.735, y: 90, z: 0}
 --- !u!1 &4762527695700520748
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,68 +216,6 @@ MonoBehaviour:
   WeaponAttackDecorator: {fileID: 535337895529887197}
   Spread: 5
   ShootCount: 8
---- !u!1 &4920165699701868059
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4558811161437458197}
-  m_Layer: 0
-  m_Name: ProjectileShootSource1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4558811161437458197
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4920165699701868059}
-  m_LocalRotation: {x: -0, y: 0.097841926, z: -0, w: 0.99520195}
-  m_LocalPosition: {x: -0.2524, y: 0.38900006, z: -0.104499996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3646610130618177974}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 101.23, z: 0}
---- !u!1 &5833009184169649174
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 12552935088622589}
-  m_Layer: 0
-  m_Name: ProjectileShootSource5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &12552935088622589
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833009184169649174}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2524, y: 0.38900006, z: -0.104499996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3646610130618177974}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6006132502322058599
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,37 +330,6 @@ MonoBehaviour:
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &6626535369404530922
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6202474848524555064}
-  m_Layer: 0
-  m_Name: ProjectileShootSource4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6202474848524555064
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626535369404530922}
-  m_LocalRotation: {x: 0.026929975, y: -0, z: -0, w: 0.99963737}
-  m_LocalPosition: {x: -0.2524, y: 0.389, z: -0.1045}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3646610130618177974}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 3.086, y: 90, z: 0}
 --- !u!1 &7298275119657048488
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7298275119657048488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2524, y: 0.24100006, z: -0.60649997}
+  m_LocalPosition: {x: -0.2524, y: 0.38900006, z: -0.3622}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -583,37 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 2218656500365710417}
---- !u!1 &8694741299099162229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 925430717179643069}
-  m_Layer: 0
-  m_Name: ProjectileShootSource2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &925430717179643069
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8694741299099162229}
-  m_LocalRotation: {x: -0, y: -0.09603397, z: -0, w: 0.9953781}
-  m_LocalPosition: {x: -0.2524, y: 0.38900006, z: -0.104499996}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3646610130618177974}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 78.978, z: 0}
 --- !u!1001 &5537285699171306090
 PrefabInstance:
   m_ObjectHideFlags: 0

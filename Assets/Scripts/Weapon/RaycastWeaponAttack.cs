@@ -55,9 +55,10 @@ namespace Assets.Scripts.Weapon
                 {
                     GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                     Destroy(sphere.GetComponent<Collider>());
-                    sphere.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+                    sphere.transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
                     sphere.transform.localPosition = hit.point;
                     sphere.transform.localRotation = Quaternion.identity;
+                    sphere.GetComponent<Renderer>().material.color = Color.grey;
                     Destroy(sphere, 5);
                 }
 

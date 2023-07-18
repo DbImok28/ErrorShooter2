@@ -10,6 +10,9 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
     [Header("Weapon")]
     [SerializeField] public GameObject WeaponSocket;
 
+    public bool PlayerIsMoving;
+    public bool PlayerIsRunning;
+
     public UnityEvent<Weapon> WeaponChanged;
 
     private GameObject ActiveWeaponGameObject;
@@ -118,11 +121,8 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
         if (isPaused)
             return;
 
-
         if (GetComponent<HealthComponent>().IsDead)
             return;
-
-
 
         moveDirection = new Vector3
         {
@@ -131,7 +131,26 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             z = Input.GetAxisRaw("Vertical")
         };
 
+        if(moveDirection.x!=0 || moveDirection.z != 0)
+        {
+            PlayerIsMoving = true;
+        }
+        else
+        {
+            PlayerIsMoving = false;
+        }
+
         run = Input.GetButton("Fire3");
+
+        if (run)
+        {
+            PlayerIsMoving = false;
+            PlayerIsRunning = true;
+        }
+        else
+        {
+            PlayerIsRunning = false;
+        }
 
         jump = Input.GetButton("Jump");
 

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerSound : MonoBehaviour
 {
-    
+    public AudioSource stepSource;
+    public AudioSource runSource;
 
     public AudioClip damage;
     public AudioClip death;
@@ -20,6 +21,34 @@ public class PlayerSound : MonoBehaviour
         health = FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<HealthComponent>();
         pei = FindObjectsOfType<PlayerController>()[0].gameObject.GetComponent<PlayerEnvironmentInteraction>();
         player = FindObjectOfType<PlayerController>();
+    }
+
+    private void Update()
+    {
+        if (player.PlayerIsMoving && !stepSource.isPlaying) 
+        { 
+            stepSource.Play();
+            Debug.Log("play steps");
+        }// if player is moving and audiosource is not playing play it
+        if (!player.PlayerIsMoving) 
+        {
+            Debug.Log("dont play steps");
+            stepSource.Stop(); 
+        }
+
+        if (player.PlayerIsRunning && !runSource.isPlaying)
+        {
+            runSource.Play();
+            Debug.Log("play run");
+        }// if player is moving and audiosource is not playing play it
+        if (!player.PlayerIsRunning)
+        {
+            Debug.Log("dont play steps");
+            runSource.Stop();
+        }
+
+
+
     }
 
     public void Start()
@@ -51,4 +80,5 @@ public class PlayerSound : MonoBehaviour
         //Debug.Log("звук смерти");
         source.PlayOneShot(swap_weapon);
     }
+
 }

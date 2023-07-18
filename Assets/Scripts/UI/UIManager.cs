@@ -177,6 +177,8 @@ public class UIManager : MonoBehaviour, ISaveable
         //MainMenuButton.interactable = false;
 
         settingsDialog.gameObject.SetActive(false);
+
+        SaveLoadManager.instance.SaveSettings(settingsDialog.settingsManager);
     }
 
     public void LockCursor()

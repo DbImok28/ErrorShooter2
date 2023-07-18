@@ -275,6 +275,54 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2029978552510632606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1967503759221192963}
+  - component: {fileID: 2251615945605820309}
+  m_Layer: 0
+  m_Name: SettingsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1967503759221192963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029978552510632606}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5343144425144482260}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2251615945605820309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029978552510632606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ebc40514083e6489cc6a6cb9e461b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lateralSensitivity: 4
+  verticalSensitivity: 4
+  maxPitchAngle: -80
+  minPitchAngle: 80
 --- !u!1 &2091811724844288291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1869,6 +1917,7 @@ Transform:
   - {fileID: 6458004785637696529}
   - {fileID: 472828995343250792}
   - {fileID: 6582950287813661562}
+  - {fileID: 1967503759221192963}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4286,6 +4335,11 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.8888889
       objectReference: {fileID: 0}
+    - target: {fileID: 2689200224897195608, guid: 61baee8bd1811054fb17e3ff1fb7e7b5,
+        type: 3}
+      propertyPath: settingsManager
+      value: 
+      objectReference: {fileID: 2251615945605820309}
     - target: {fileID: 2689200224897195611, guid: 61baee8bd1811054fb17e3ff1fb7e7b5,
         type: 3}
       propertyPath: m_Alpha

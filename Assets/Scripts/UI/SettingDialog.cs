@@ -16,6 +16,7 @@ public class SettingDialog : MonoBehaviour
 
     public void SetLateralSensitivity(float value)
     {
+        Debug.Log($"settingsManager.lateralSensitivity = {value}");
         settingsManager.lateralSensitivity = value;
 
     }

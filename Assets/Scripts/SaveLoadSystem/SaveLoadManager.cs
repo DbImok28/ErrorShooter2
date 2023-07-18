@@ -88,6 +88,14 @@ public class SaveLoadManager : MonoBehaviour
 
     }
 
+    public void SaveSettings(SettingsManager sm)
+    {
+        Debug.Log("save settings");
+        sm.SaveData(ref gameData);
+
+        jsonDataHandler.SaveData(gameData);
+    }
+
     public void SaveGame()
     {
         Debug.Log("SAVE GAME");

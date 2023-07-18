@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Scripts.Weapon
@@ -7,12 +9,15 @@ namespace Assets.Scripts.Weapon
     {
         [SerializeField] private WeaponAttack WeaponAttackDecorator;
         [SerializeField] private int MagazineCapacity = 30;
+        [SerializeField] private float TimeToReload = 1.0f;
 
         public int _MagazineCapacity { get { return MagazineCapacity; } }
 
         // TODO:Mark private
         public int AmmoInMagazine = 0;
         public int AmmoAmount = 0;
+
+        private bool IsReloadingNow = false;
 
         public UnityEvent<MagazineWeaponAttack> AmmoAmountChanged;
         public UnityEvent MagazineReloaded;
@@ -28,7 +33,7 @@ namespace Assets.Scripts.Weapon
 
         public override bool Attack(Vector3 position, Vector3 direction)
         {
-            if (AmmoInMagazine == 0)
+            if (IsReloadingNow || AmmoInMagazine == 0)
             {
                 return false;
             }
@@ -59,9 +64,23 @@ namespace Assets.Scripts.Weapon
 
         public void Reload()
         {
+            if (!IsReloadingNow && AmmoAmount > 0 && AmmoInMagazine < MagazineCapacity)
+            {
+                StartReload();
+                Invoke(nameof(EndReload), TimeToReload);
+            }
+        }
+
+        private void StartReload()
+        {
+            IsReloadingNow = true;
+            MagazineReloaded?.Invoke();
+        }
+
+        private void EndReload()
+        {
             AmmoAmount = ChargeAmmo(AmmoAmount);
-            if (AmmoAmount > 0)
-                MagazineReloaded?.Invoke();
+            IsReloadingNow = false;
         }
 
         public void IncreaseAmmo(int ammo)

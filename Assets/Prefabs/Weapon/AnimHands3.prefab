@@ -4747,6 +4747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponAttackDecorator: {fileID: 7982331120337354713}
   MagazineCapacity: 30
+  TimeToReload: 1
   AmmoInMagazine: 30
   AmmoAmount: 30
   AmmoAmountChanged:

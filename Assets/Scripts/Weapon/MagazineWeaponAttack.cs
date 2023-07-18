@@ -16,6 +16,7 @@ namespace Assets.Scripts.Weapon
 
         public UnityEvent<MagazineWeaponAttack> AmmoAmountChanged;
         public UnityEvent MagazineReloaded;
+        public UnityEvent AmmoReleased;
         public UnityEvent<int> OnIncreaseAmmo;
         public UnityEvent OnAttack;
 
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Weapon
             --AmmoInMagazine;
 
             AmmoAmountChanged?.Invoke(this);
+            AmmoReleased?.Invoke();
 
             WeaponAttackDecorator.Attack(position, direction);
             OnAttack.Invoke();

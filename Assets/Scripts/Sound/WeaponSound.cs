@@ -21,7 +21,7 @@ public class WeaponSound : MonoBehaviour
 
         reload=Resources.Load<AudioClip>("Sounds/weapon/weapon_reload");
 
-        weapon.TriggerPressed.AddListener(Shoot);
+        weapon.Magazine.AmmoReleased.AddListener(Shoot);
         weapon.Magazine.MagazineReloaded.AddListener(Reload);
 
 

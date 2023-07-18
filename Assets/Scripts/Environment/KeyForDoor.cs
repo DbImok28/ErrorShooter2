@@ -3,25 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class KeyForDoor : MonoBehaviour, ISaveable
+public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
 {
 
     public string KeyName;
 
     public bool isPickedUp;
 
-    public UnityEvent<GameObject> OnPickUp;
+    public UnityEvent<GameObject> OnKeyPickUp;
+    public UnityEvent<GameObject> OnPickUp => OnKeyPickUp;
 
     public void PickUp(GameObject player)
     {
-        OnPickUp.Invoke(player);
-        Hide();
+        //OnPickUp.Invoke(player);
+        PlayerInventory inventory = player.GetComponentInChildren<PlayerEnvironmentInteraction>().GetInventory();
+        inventory.AddKey(this.gameObject);
+
+        Debug.Log("key pick up");
+
+        HideAfterPickUp();
+    }
+
+    public void HideAfterPickUp()
+    {
+        //Debug.Log("hide");
+        //gameObject.GetComponentInChildren<Renderer>().enabled = false;
+        gameObject.SetActive(false);
     }
 
     public void Hide()
     {
-        //Debug.Log("hide");
-        //gameObject.GetComponentInChildren<Renderer>().enabled = false;
         gameObject.SetActive(false);
     }
 
@@ -66,5 +77,10 @@ public class KeyForDoor : MonoBehaviour, ISaveable
         //Debug.Log("key for door save data");
 
         gameData.SaveKey(KeyName, isPickedUp, KeyName);
+    }
+
+    public bool IsPickedUp()
+    {
+        return isPickedUp;
     }
 }

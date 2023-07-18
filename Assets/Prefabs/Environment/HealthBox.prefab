@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6464748969684219171}
   - component: {fileID: 7490590118648957056}
   - component: {fileID: 41085763886114059}
-  - component: {fileID: 7916608614734721200}
   - component: {fileID: 8427303531140361254}
   m_Layer: 0
   m_Name: HealthBox
@@ -87,23 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutlineColor: {r: 1, g: 0.7072705, b: 0, a: 1}
   OutlineWidth: 10
---- !u!114 &7916608614734721200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4002112770470652063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b69550882450f3418d41765a8c414bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: $Health_0
-  isPickedUp: 0
-  OnPickUp:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8427303531140361254
 MonoBehaviour:
   m_ObjectHideFlags: 0

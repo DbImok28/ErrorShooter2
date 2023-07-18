@@ -179,7 +179,8 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            environmentInteraction.PickUpKey();
+            environmentInteraction.PickUpItem();
+            //environmentInteraction.PickUpKey();
         }
         if (Input.GetKeyDown(KeyCode.L))
         {

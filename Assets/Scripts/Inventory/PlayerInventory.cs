@@ -11,6 +11,13 @@ public class PlayerInventory : MonoBehaviour, ISaveable
 
     public UnityEvent<List<string>> KeyPickedUp;
 
+    public void AddKey(GameObject key)
+    {
+        KeysNames.Add(key.GetComponent<KeyForDoor>().KeyName);
+
+        KeyPickedUp?.Invoke(KeysNames);
+    }
+
     public void LoadData(GameData gameData)
     {
         //Debug.Log("player inventory load data");

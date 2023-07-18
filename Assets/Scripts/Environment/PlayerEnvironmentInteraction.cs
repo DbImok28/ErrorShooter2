@@ -43,6 +43,11 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
         //InteractableAssigned += InvokeMsg;
     }
 
+    public PlayerInventory GetInventory()
+    {
+        return inventory;
+    }
+
     public void PickUpKey()
     {
         //Debug.Log("PickUpKey");
@@ -139,6 +144,47 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
 
         matchingKey = null;
         return false;
+    }
+
+    public bool PickableItemIsNear(out GameObject pickable)
+    {
+        var colliders = Physics.OverlapSphere(gameObject.transform.position, CanPickUpItemRadius);
+
+        foreach (var collider in colliders)
+        {
+            IPickableItem _pickable = collider.gameObject.GetComponent<IPickableItem>();
+
+            if (_pickable!=null) {
+                pickable = collider.gameObject;
+                return true;
+            }
+        }
+
+        pickable = null;
+        return false;
+    }
+
+    public void PickUpItem()
+    {
+
+        GameObject item;
+
+        if (PickableItemIsNear(out item) && !item.GetComponent<IPickableItem>().IsPickedUp())
+        {
+            Debug.Log("pickable item is near");
+            /*
+            inventory.KeysNames.Add(key.name);
+
+            inventory.KeyPickedUp?.Invoke(inventory.KeysNames);
+
+            //Анимация подбора ключа
+
+            key.GetComponent<KeyForDoor>().isPickedUp = true;
+            key.GetComponent<KeyForDoor>().PickUp(gameObject);
+            */
+            item.GetComponent<IPickableItem>().PickUp(this.gameObject);
+
+        }
     }
 
 

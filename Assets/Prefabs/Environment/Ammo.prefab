@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6464748969684219171}
   - component: {fileID: 7490590118648957056}
   - component: {fileID: 41085763886114059}
-  - component: {fileID: 6650490977170426992}
   - component: {fileID: 3688017337817286988}
   m_Layer: 0
   m_Name: Ammo
@@ -87,23 +86,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OutlineColor: {r: 1, g: 0.7072705, b: 0, a: 1}
   OutlineWidth: 10
---- !u!114 &6650490977170426992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4002112770470652063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b69550882450f3418d41765a8c414bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KeyName: $Ammo_0
-  isPickedUp: 0
-  OnPickUp:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &3688017337817286988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShotGunAmmoAmount: 2
   AkAmmoAmount: 10
+  OnAmmoPickUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4002112771191881265
 GameObject:
   m_ObjectHideFlags: 0

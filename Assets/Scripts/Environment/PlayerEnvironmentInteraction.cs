@@ -38,9 +38,6 @@ public class PlayerEnvironmentInteraction : MonoBehaviour, ICanOpenDoor
             FPSCamera = GetComponentInChildren<Camera>();
         }
 
-
-
-        //InteractableAssigned += InvokeMsg;
     }
 
     public PlayerInventory GetInventory()

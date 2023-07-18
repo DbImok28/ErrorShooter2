@@ -15,19 +15,14 @@ public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
 
     public void PickUp(GameObject player)
     {
-        //OnPickUp.Invoke(player);
         PlayerInventory inventory = player.GetComponentInChildren<PlayerEnvironmentInteraction>().GetInventory();
         inventory.AddKey(this.gameObject);
-
-        Debug.Log("key pick up");
 
         HideAfterPickUp();
     }
 
     public void HideAfterPickUp()
     {
-        //Debug.Log("hide");
-        //gameObject.GetComponentInChildren<Renderer>().enabled = false;
         gameObject.SetActive(false);
     }
 
@@ -38,32 +33,12 @@ public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
 
     public void LoadData(GameData gameData)
     {
-        /*
-        Debug.Log("load key");
-        KeyData keyData = gameData.LoadKey(gameObject.GetInstanceID());
-
-        isPickedUp = keyData.isPickedUp;
-        keyDoorId = keyData.keyDoorId;
-        KeyName = keyData.name;
-
-        Debug.Log($"is key picked up {isPickedUp}");
-
-        if (isPickedUp)
-            Hide();
-        */
-        //Debug.Log("key for door load data");
-
-        //Debug.Log(gameObject.GetInstanceID());
-
         KeyData keyData = gameData.LoadKey(KeyName);
 
         if (keyData != null)
         {
-            //Debug.Log("keyData!=null");
             isPickedUp = keyData.isPickedUp;
             KeyName = keyData.name;
-
-            //Debug.Log($"isPickedUp {isPickedUp}");
 
             if (isPickedUp)
                 Hide();
@@ -74,8 +49,6 @@ public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
 
     public void SaveData(ref GameData gameData)
     {
-        //Debug.Log("key for door save data");
-
         gameData.SaveKey(KeyName, isPickedUp, KeyName);
     }
 

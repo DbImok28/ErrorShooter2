@@ -20,8 +20,6 @@ public class PlayerInventory : MonoBehaviour, ISaveable
 
     public void LoadData(GameData gameData)
     {
-        //Debug.Log("player inventory load data");
-
         foreach(KeyValuePair<string, KeyData> entry in gameData.keysData)
         {
             if (entry.Value.isPickedUp)

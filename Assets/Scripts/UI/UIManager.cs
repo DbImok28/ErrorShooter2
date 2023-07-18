@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour, ISaveable
     public Button RespawnButton;
     public Button MainMenuButton;
     public Button PauseMainMenuButton;
+    public Button SettingsShowButton;
+    public Button SettingsHideButton;
 
     public HealthProgressBar HealthProgressBar;
     public AmmoBar AmmoBar;
@@ -24,6 +26,7 @@ public class UIManager : MonoBehaviour, ISaveable
     public DamageSrceen damageSrceen;
     public PauseDialog pauseDialog;
     public DeathDialog deathDialog;
+    public SettingDialog settingsDialog;
 
     private PlayerController player;
     private HealthComponent health;
@@ -88,6 +91,8 @@ public class UIManager : MonoBehaviour, ISaveable
         MainMenuButton.onClick.AddListener(MainMenuCommand);
         PauseMainMenuButton.onClick.AddListener(MainMenuCommand);
         ContinueGameButton.onClick.AddListener(EndPause);
+        SettingsShowButton.onClick.AddListener(ShowSettingsDialog);
+        SettingsHideButton.onClick.AddListener(HideSettingsDialog);
 
         health.OnTakeDamage.AddListener(PlayDamageScreen);
         health.OnDie.AddListener(ShowDeathDialog);
@@ -154,6 +159,24 @@ public class UIManager : MonoBehaviour, ISaveable
         MainMenuButton.interactable = false;
 
         deathDialog.gameObject.SetActive(false);
+    }
+
+    public void ShowSettingsDialog()
+    {
+        //RespawnButton.interactable = true;
+        //MainMenuButton.interactable = true;
+
+        settingsDialog.gameObject.SetActive(true);
+    }
+
+
+
+    public void HideSettingsDialog()
+    {
+        //RespawnButton.interactable = false;
+        //MainMenuButton.interactable = false;
+
+        settingsDialog.gameObject.SetActive(false);
     }
 
     public void LockCursor()

@@ -21,7 +21,8 @@ public class KeyForDoor : MonoBehaviour, ISaveable
     public void Hide()
     {
         //Debug.Log("hide");
-        gameObject.GetComponentInChildren<Renderer>().enabled = false;
+        //gameObject.GetComponentInChildren<Renderer>().enabled = false;
+        gameObject.SetActive(false);
     }
 
     public void LoadData(GameData gameData)

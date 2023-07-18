@@ -170,14 +170,14 @@ public class PlayerController : BaseFirstPersonController, ISaveable, IPauseHand
             {
                 ActiveWeapon.Magazine.Reload();
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 SwapToNextWeapon();
             }
         }
 
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             environmentInteraction.PickUpKey();
         }

@@ -13,7 +13,7 @@ public class HealthComponent : MonoBehaviour, ISaveable
     public UnityEvent<HealthComponent, float> OnTakeDamage;
     public UnityEvent<GameObject> OnDie;
     public UnityEvent OnRespawn;
-    public UnityEvent OnHeal;
+    public UnityEvent<HealthComponent> OnHeal;
     public UnityEvent<HealthComponent> OnGameStart;
 
     public void TakeDamage(float damage)
@@ -32,7 +32,8 @@ public class HealthComponent : MonoBehaviour, ISaveable
     {
         if (IsDead) return;
         CurrentHealth = Mathf.Clamp(CurrentHealth + recovery, 0.0f, MaxHealth);
-        OnHeal.Invoke();
+
+        OnHeal.Invoke(this);
     }
 
     public void Die()

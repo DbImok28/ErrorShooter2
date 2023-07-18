@@ -17,12 +17,15 @@ public abstract class Door : MonoBehaviour
 
     private Animator animator;
 
+    private AudioSource audioSource;
+
     
     protected virtual void Start()
     {
         isOpen = false;
         DoorBottom = GetComponentInChildren<BoxCollider>().bounds.min;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -32,6 +35,8 @@ public abstract class Door : MonoBehaviour
         {
             animator.SetBool("CanBeOpened", true);
             isOpen = true;
+
+            audioSource.Play();
         }
         
     }
@@ -42,6 +47,8 @@ public abstract class Door : MonoBehaviour
         {
             animator.SetBool("CanBeOpened", false);
             isOpen = false;
+
+            audioSource.Play();
         }
     }
 

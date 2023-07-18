@@ -12,10 +12,12 @@ public class BotSpawner : MonoBehaviour
 
     public UnityEvent<GameObject> BotSpawned;
 
+    public GameObject LookTarget;
+
     private bool playerVisitedTrigget;
 
-    private BotDistanceFactory botDistanceFactory=new BotDistanceFactory();
-    private BotMeleeFactory botMeleeFactory=new BotMeleeFactory();
+    private BotDistanceFactory botDistanceFactory = new BotDistanceFactory();
+    private BotMeleeFactory botMeleeFactory = new BotMeleeFactory();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,16 +29,27 @@ public class BotSpawner : MonoBehaviour
         }
     }
 
+    public void LookAt(GameObject bot)
+    {
+        GameObject toLookObject = LookTarget != null ? LookTarget : FindObjectOfType<PlayerController>().gameObject;
+
+        Vector3 targetPostition = new Vector3(toLookObject.transform.position.x,
+                    transform.position.y, toLookObject.transform.position.z);
+        bot.transform.LookAt(targetPostition);
+
+    }
+
     public void SpawnBots()
     {
         Debug.Log("Spawn bots");
 
-        for(int i=0; i < EnemeMeeleAmount; i++)
+        for (int i = 0; i < EnemeMeeleAmount; i++)
         {
             Vector3 randomPosition = PickRandomSpawnPosition();
-            float startHelath=5;
+            float startHelath = 5;
 
             GameObject bot = botMeleeFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath);
+            LookAt(bot);
 
             BotSpawned?.Invoke(bot);
         }
@@ -47,6 +60,7 @@ public class BotSpawner : MonoBehaviour
             float startHelath = 5;
 
             GameObject bot = botDistanceFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath);
+            LookAt(bot);
 
             BotSpawned?.Invoke(bot);
         }

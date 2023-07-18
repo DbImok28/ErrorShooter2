@@ -8,7 +8,7 @@ public class BotMeleeFactory : BotFactory
     {
         var prefab = Resources.Load<GameObject>("Prefabs/Bots/EnemyMelee");
 
-        var go = GameObject.Instantiate(prefab, new Vector3(x, y, x), Quaternion.identity);
+        var go = GameObject.Instantiate(prefab, new Vector3(x, y, z), Quaternion.identity);
 
         go.GetComponent<HealthComponent>().CurrentHealth = health;
 

@@ -15,6 +15,6 @@ public class BotDistanceFactory : BotFactory
         return go;
     }
 }
-    
-    
+
+
 

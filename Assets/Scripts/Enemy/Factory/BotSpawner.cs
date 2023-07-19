@@ -1,7 +1,9 @@
+using BehaviorDesigner.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public class BotSpawner : MonoBehaviour
 {
@@ -61,6 +63,7 @@ public class BotSpawner : MonoBehaviour
 
             GameObject bot = botDistanceFactory.FactoryMethod(randomPosition.x, randomPosition.y, randomPosition.z, startHelath, Quaternion.identity);
             LookAt(bot);
+            bot.GetComponent<BehaviorTree>().SetVariableValue("LastSeePos", FindObjectOfType<PlayerController>().gameObject.transform.position);
 
             BotSpawned?.Invoke(bot);
         }

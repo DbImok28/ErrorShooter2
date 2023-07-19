@@ -8,6 +8,8 @@ TagManager:
   - DistanceBot
   - MeleeBot
   - Palka
+  - DistBot
+  - MelBot
   layers:
   - Default
   - TransparentFX

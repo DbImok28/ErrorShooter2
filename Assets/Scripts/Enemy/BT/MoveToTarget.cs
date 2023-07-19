@@ -11,12 +11,18 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
         public SharedFloat angularSpeed = 120;
         public SharedFloat arriveDistance = 0.2f;
         public SharedVector3 positionTo;
+        public Animator anim;
+        public GameObject mech;
+        public AudioSource audioSource;
 
         protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
         public override void OnAwake()
         {
             navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+            mech = GameObject.FindWithTag("DistBot");
+            anim = mech.GetComponent<Animator>();
+            audioSource = mech.GetComponent<AudioSource>();
         }
 
         public override void OnStart()
@@ -24,6 +30,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
             navMeshAgent.speed = speed.Value;
             navMeshAgent.angularSpeed = angularSpeed.Value;
             navMeshAgent.isStopped = false;
+            audioSource.Play();
             SetDestination();
         }
 
@@ -43,6 +50,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
         {
             if (positionTo.Value != Vector3.zero)
             {
+                anim.SetTrigger("Run");
                 navMeshAgent.isStopped = false;
                 Debug.Log(positionTo.Value);
                 return navMeshAgent.SetDestination(positionTo.Value);
@@ -75,6 +83,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
 
         public override void OnEnd()
         {
+            anim.SetTrigger("NotRun");
+            audioSource.Stop();
             Stop();
         }
 

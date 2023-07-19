@@ -7,11 +7,16 @@ public class AttackAction : Action
 {
     public SharedGameObject Target;
     public Weapon WeaponToAttack;
+    public Animator anim;
+    public GameObject mech;
 
     public override void OnStart()
     {
+        mech = GameObject.FindWithTag("DistBot");
+        anim = mech.GetComponent<Animator>();
         if (WeaponToAttack == null)
             WeaponToAttack = gameObject.GetComponentInChildren<Weapon>();
+        anim.SetTrigger("Shoot");
         WeaponToAttack.Release();
     }
 
@@ -30,6 +35,7 @@ public class AttackAction : Action
 
     public override void OnEnd()
     {
+        anim.SetTrigger("NotShoot");
         WeaponToAttack.Release();
     }
 }

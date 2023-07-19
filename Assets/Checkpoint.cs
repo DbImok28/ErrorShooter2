@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public AudioClip save_sound;
+
+    private AudioSource source;
+
+
+
+    public void Start()
+    {
+        source = gameObject.GetComponent<AudioSource>();
+    }
     public void Save()
     {
-        //Debug.Log("checkpoint savegame");
-
         SaveLoadManager.instance.SaveGame();
+
+        source.PlayOneShot(save_sound);
     }
 }

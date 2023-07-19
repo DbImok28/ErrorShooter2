@@ -609,6 +609,7 @@ MonoBehaviour:
   damage: {fileID: 8300000, guid: 404283a0e969dd646bf01ca7ab9ed080, type: 3}
   death: {fileID: 8300000, guid: c28dd0dac526aef40863a4d32b8c91c5, type: 3}
   swap_weapon: {fileID: 8300000, guid: e3ecee2bceb59604fa2b8dc9e5f8b801, type: 3}
+  heal: {fileID: 8300000, guid: 33a5bc2844c453b4ebdf6e4a64e6ace2, type: 3}
 --- !u!82 &3153445788365136568
 AudioSource:
   m_ObjectHideFlags: 0

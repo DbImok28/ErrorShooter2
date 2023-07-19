@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
 {
+    public AudioClip pick_up;
 
     public string KeyName;
 
@@ -19,6 +20,8 @@ public class KeyForDoor : MonoBehaviour, ISaveable, IPickableItem
         inventory.AddKey(this.gameObject);
 
         isPickedUp = true;
+
+        GetComponent<AudioSource>().PlayOneShot(pick_up);
 
         HideAfterPickUp();
     }

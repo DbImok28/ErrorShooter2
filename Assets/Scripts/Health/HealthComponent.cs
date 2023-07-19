@@ -30,6 +30,8 @@ public class HealthComponent : MonoBehaviour, ISaveable
 
     public void Heal(float recovery)
     {
+        Debug.Log("heal");
+
         if (IsDead) return;
         CurrentHealth = Mathf.Clamp(CurrentHealth + recovery, 0.0f, MaxHealth);
 

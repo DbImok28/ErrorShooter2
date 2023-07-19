@@ -10,6 +10,7 @@ public class PlayerSound : MonoBehaviour
     public AudioClip damage;
     public AudioClip death;
     public AudioClip swap_weapon;
+    public AudioClip heal;
 
     private AudioSource source;
 
@@ -60,8 +61,14 @@ public class PlayerSound : MonoBehaviour
 
         health.OnTakeDamage.AddListener(PlayDamage);
         health.OnDie.AddListener(PlayDeath);
+        health.OnHeal.AddListener(PlayHeal);
         player.WeaponChanged.AddListener(PlayWeaponSwap);
 
+    }
+
+    public void PlayHeal(HealthComponent _health)
+    {
+        source.PlayOneShot(heal);
     }
 
     public void PlayDamage(HealthComponent _health, float _damage)

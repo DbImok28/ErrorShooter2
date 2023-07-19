@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class AmmoPickUp : MonoBehaviour,IPickableItem
 {
+    public AudioClip pick_up;
+
     public int ShotGunAmmoAmount = 2;
     public int AkAmmoAmount = 10;
 
@@ -11,14 +13,6 @@ public class AmmoPickUp : MonoBehaviour,IPickableItem
 
     private bool isPickedUp;
 
-    void Start()
-    {
-        /*
-        var keyForDoor = GetComponent<KeyForDoor>();
-        if (keyForDoor != null)
-            keyForDoor.OnPickUp.AddListener(PickUp);
-        */
-    }
 
     public void PickUp(GameObject player)
     {
@@ -31,9 +25,10 @@ public class AmmoPickUp : MonoBehaviour,IPickableItem
 
             isPickedUp = true;
 
+            GetComponent<AudioSource>().PlayOneShot(pick_up);
+
             HideAfterPickUp();
         }
-        print("Ammo");
     }
 
     public bool IsPickedUp()

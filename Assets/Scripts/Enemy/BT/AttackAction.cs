@@ -9,6 +9,8 @@ public class AttackAction : Action
     public Weapon WeaponToAttack;
     public Animator anim;
     public GameObject mech;
+    public AudioSource audioSource;
+    //public AudioClip clip;
 
     public override void OnStart()
     {
@@ -17,6 +19,9 @@ public class AttackAction : Action
         if (WeaponToAttack == null)
             WeaponToAttack = gameObject.GetComponentInChildren<Weapon>();
         anim.SetTrigger("Shoot");
+        audioSource = mech.GetComponents<AudioSource>()[1];
+        audioSource.Play();
+        //audioSource.clip = clip;
         WeaponToAttack.Release();
     }
 
@@ -36,6 +41,7 @@ public class AttackAction : Action
     public override void OnEnd()
     {
         anim.SetTrigger("NotShoot");
+        //audioSource.Stop();
         WeaponToAttack.Release();
     }
 }

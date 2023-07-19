@@ -14,6 +14,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
         public Animator anim;
         public GameObject mech;
         public AudioSource audioSource;
+        public AudioClip clip;
 
         protected UnityEngine.AI.NavMeshAgent navMeshAgent;
 
@@ -22,7 +23,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
             navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             mech = GameObject.FindWithTag("DistBot");
             anim = mech.GetComponent<Animator>();
-            audioSource = mech.GetComponent<AudioSource>();
+            audioSource = mech.GetComponents<AudioSource>()[0];
+            //audioSource.clip = clip;
         }
 
         public override void OnStart()

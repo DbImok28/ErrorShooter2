@@ -34,7 +34,7 @@ public class AttackAction : Action
         transform.LookAt(targetPostition);
 
         WeaponToAttack.Press();
-        Debug.Log("Attack");
+        //Debug.Log("Attack");
         return TaskStatus.Success;
     }
 

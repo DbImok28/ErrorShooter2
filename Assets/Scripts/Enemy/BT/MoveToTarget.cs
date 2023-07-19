@@ -54,7 +54,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Bots
             {
                 anim.SetTrigger("Run");
                 navMeshAgent.isStopped = false;
-                Debug.Log(positionTo.Value);
+                //Debug.Log(positionTo.Value);
                 return navMeshAgent.SetDestination(positionTo.Value);
             }
             return false;

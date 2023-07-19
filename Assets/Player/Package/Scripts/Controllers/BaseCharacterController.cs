@@ -82,7 +82,7 @@ namespace ECM.Controllers
         [SerializeField]
         private float _extraJumpTime = 0.5f;
 
-        [Tooltip("Acceleration while jump button is held down, given in meters / sec^2."+
+        [Tooltip("Acceleration while jump button is held down, given in meters / sec^2." +
                  "As rule of thumb, configure it to your character's gravity.")]
         [SerializeField]
         private float _extraJumpPower = 25.0f;
@@ -131,7 +131,7 @@ namespace ECM.Controllers
         protected int _midAirJumpCount;
 
         private bool _allowVerticalMovement;
-        
+
         private bool _restoreVelocityOnResume = true;
 
         #endregion
@@ -696,7 +696,7 @@ namespace ECM.Controllers
         /// <summary>
         /// Handle character's Crouch / UnCrouch.
         /// </summary>
-        
+
         protected virtual void Crouch()
         {
             // If crouching behaviour is disabled, return
@@ -791,7 +791,7 @@ namespace ECM.Controllers
             }
 
             // Jump logic
-            
+
             Jump();
             MidAirJump();
             UpdateJumpTimer();
@@ -819,7 +819,7 @@ namespace ECM.Controllers
             if (useRootMotion && applyRootMotion && useRootMotionRotation)
             {
                 // Use animation rotation to rotate our character
-                
+
                 movement.rotation *= animator.deltaRotation;
             }
             else
@@ -839,7 +839,7 @@ namespace ECM.Controllers
             // Toggle pause / resume.
             // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
                 pause = !pause;
 
             // Handle user input
@@ -951,7 +951,7 @@ namespace ECM.Controllers
 
             Animate();
         }
-        
+
         #endregion
     }
 }

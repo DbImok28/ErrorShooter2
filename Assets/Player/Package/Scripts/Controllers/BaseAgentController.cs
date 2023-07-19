@@ -149,7 +149,7 @@ namespace ECM.Controllers
             {
                 // If destination is reached,
                 // reset stop agent and clear its path
-                
+
                 agent.ResetPath();
             }
         }
@@ -177,7 +177,7 @@ namespace ECM.Controllers
             // Toggle pause / resume.
             // By default, will restore character's velocity on resume (eg: restoreVelocityOnResume = true)
 
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
                 pause = !pause;
 
             crouch = Input.GetKey(KeyCode.C);

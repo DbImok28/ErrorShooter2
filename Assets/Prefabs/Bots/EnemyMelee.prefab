@@ -79,6 +79,8 @@ MonoBehaviour:
   enemyType: 0
   IsRunAway: 0
   weapon: {fileID: 2571872814960673073}
+  anim: {fileID: 7648367801802632557}
+  mel: {fileID: 2939230310245111254}
 --- !u!195 &229353154969662296
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public Button ContinueGameButton;
     public Button SettingsButton;
     public Button BackToMenuButton;
+    public Button ExitGameButton;
 
     public SettingDialog settingsDialog;
 
@@ -26,6 +27,7 @@ public class MainMenu : MonoBehaviour
         ContinueGameButton.onClick.AddListener(ContinueGame);
         SettingsButton.onClick.AddListener(ShowSettingsDialog);
         BackToMenuButton.onClick.AddListener(HandleBackToMenu);
+        ExitGameButton.onClick.AddListener(ExitGame);
 }
 
 
@@ -63,9 +65,8 @@ public class MainMenu : MonoBehaviour
         settingsDialog.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ExitGame()
     {
-
+        Application.Quit();
     }
 }

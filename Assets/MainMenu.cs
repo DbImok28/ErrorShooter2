@@ -33,9 +33,8 @@ public class MainMenu : MonoBehaviour
     {
 
         SaveLoadManager.instance.NewGame();
-        // load the gameplay scene - which will in turn save the game because of
-        // OnSceneUnloaded() in the DataPersistenceManager
-        SceneManager.LoadSceneAsync(GAMEPLAY_SCENE_NAME);
+
+        SceneManager.LoadScene("StartCutscene");
 
     }
 
